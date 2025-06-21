@@ -1,5 +1,5 @@
 import logo from './assets/Logo_1.svg';
-import patos from '/Users/alejandrogoscu/Desktop/theBridge/u4Frontend/patukis/patukisFrontend/src/assets/paticontructors.png';
+import patos from './assets/paticontructors.png';
 import './App.css';
 
 function App() {
