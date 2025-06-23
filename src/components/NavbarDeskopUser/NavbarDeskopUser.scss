@@ -1,0 +1,129 @@
+$primary-blue: #004cff;
+$text-color: white;
+$hover-color: rgba(211, 211, 211, 0.338);
+$icon-size-desktop: 24px;
+$icon-size-mobile: 20px;
+$font-size-desktop: 15px;
+$font-size-mobile: 13px;
+$navbar-height-desktop: 40px;
+$navbar-height-mobile: 60px;
+
+.navbar-container {
+  width: 100%;
+  background-color: $primary-blue;
+  border-radius: 25px;
+  padding: 0; 
+  margin: 0 auto; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  
+
+  .navbar-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;
+    height: $navbar-height-desktop; 
+    gap: 15px; 
+  }
+        .navbar-icon-img { // <--- Asegúrate de usar esta clase
+    width: 30px;  // El ancho de la imagen
+    height: 25px; // La altura de la imagen
+    object-fit: contain; // Para que la imagen se ajuste bien sin distorsionarse
+  
+  }
+
+  .navbar-item {
+   
+    flex-grow: 1; 
+    text-align: center;
+  }
+  .img-hover {
+  color: $hover-color;
+}
+
+  .navbar-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center;
+
+    color: $text-color;
+    text-decoration: none;
+    font-family: 'Fredoka', sans-serif; 
+    font-size: $font-size-desktop; 
+    padding: 5px 0; 
+
+    &:hover {
+      color: $hover-color;
+      
+   
+    }
+
+    svg {
+      font-size: $icon-size-desktop; 
+      margin-right: 5px; 
+      margin-bottom: 0; 
+      fill: currentColor;
+    }
+
+    img.navbar-icon {
+      width: $icon-size-desktop;
+      height: $icon-size-desktop;
+      margin-right: 5px; 
+      margin-bottom: 0;
+      object-fit: contain;
+    }
+
+    .navbar-text {
+        white-space: nowrap; 
+    }
+  }
+
+
+
+  // Para pantallas más pequeñas (tabletas y móviles)
+  @media (max-width: 768px) {
+    border-radius: 0; 
+    padding: 0; 
+
+    .navbar-list {
+      flex-wrap: wrap; 
+      height: $navbar-height-mobile; 
+      justify-content: center;
+      gap: 10px; 
+    }
+
+    .navbar-item {
+      flex-basis: 50%;
+    }
+
+    .navbar-link {
+      flex-direction: column; 
+      font-size: $font-size-mobile; 
+      padding: 5px 0; 
+
+      svg {
+        font-size: $icon-size-mobile;
+        margin-right: 0;
+        margin-bottom: 5px; 
+      }
+
+      img.navbar-icon {
+        width: $icon-size-mobile;
+        height: $icon-size-mobile;
+        margin-right: 0; 
+        margin-bottom: 5px; 
+      }
+
+    }
+  }
+
+  
+  @media (max-width: 480px) {
+    .navbar-item {
+      flex-basis: 100%;
+    }
+  }
+}
