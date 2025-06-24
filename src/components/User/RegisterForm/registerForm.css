@@ -6,29 +6,53 @@
 }
 
 .register__title {
-  align-self: start;
-  margin-left: 45px;
   font-size: 2.5rem;
 }
 
 .register__form {
   width: 80%;
   max-width: 700px;
-  padding: 25px 0px;
+  margin: 20px;
+  padding: 40px 0px 35px 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 40px;
   background-color: #4fc3f7;
   border-radius: 25px;
+  box-shadow: 6px 6px 43px 9px rgba(0, 0, 0, 0.75);
 }
 
 .register__input {
   display: block;
+  margin-top: 8px;
+  padding: 6px;
   text-align: center;
   width: 100%;
+  background-color: #fff;
+  border: none;
+  border-radius: 25px;
+  color: #ff9800;
+  font-family: inherit;
+  font-size: 1.1rem;
 }
 
 .register__label {
+  width: 60%;
+  font-weight: 500;
+  font-size: 1.3rem;
+  text-align: center;
+  color: #000;
+}
+
+.register__btn {
+  margin-top: 20px;
+  padding: 15px 40px;
+  border-radius: 25px;
+  border: none;
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: 600;
+  background-color: #ff9800;
 }
