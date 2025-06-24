@@ -10,7 +10,7 @@ function App() {
       <BrowserRouter>
         <UserProvider>
           <Routes>
-            <Route path="/" element={<RegisterForm />} />
+            <Route path="/register" element={<RegisterForm />} />
             <Route path="/confirmation" element={<RegisterConfirmation />} />
           </Routes>
         </UserProvider>

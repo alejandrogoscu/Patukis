@@ -7,6 +7,7 @@
 
 .register__title {
   font-size: 2.5rem;
+  color: var(--naranja);
 }
 
 .register__form {
@@ -19,7 +20,7 @@
   justify-content: center;
   align-items: center;
   gap: 40px;
-  background-color: #4fc3f7;
+  background-color: var(--azul);
   border-radius: 25px;
   box-shadow: 6px 6px 43px 9px rgba(0, 0, 0, 0.75);
 }
@@ -30,10 +31,10 @@
   padding: 6px;
   text-align: center;
   width: 100%;
-  background-color: #fff;
+  background-color: var(--blanco);
   border: none;
   border-radius: 25px;
-  color: #ff9800;
+  color: var(--naranja);
   font-family: inherit;
   font-size: 1.1rem;
 }
@@ -42,8 +43,9 @@
   width: 60%;
   font-weight: 500;
   font-size: 1.3rem;
+  line-height: 1.1;
   text-align: center;
-  color: #000;
+  color: var(--blanco);
 }
 
 .register__btn {
@@ -54,5 +56,11 @@
   font-family: inherit;
   font-size: 1.4rem;
   font-weight: 600;
-  background-color: #ff9800;
+  background-color: var(--naranja);
+  border: 3px solid var(--naranja);
+
+  &:hover {
+    background-color: var(--blanco);
+    color: var(--naranja);
+  }
 }

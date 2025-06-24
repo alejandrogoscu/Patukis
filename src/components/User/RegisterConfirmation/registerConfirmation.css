@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #4fc3f7;
+  color: var(--azul);
   text-align: center;
 }
 

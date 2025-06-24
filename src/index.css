@@ -13,4 +13,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --blanco: #fff;
+  --azul: #4fc3f7;
+  --naranja: #ff9800;
+  --amarillo: #ffeb3b;
 }
