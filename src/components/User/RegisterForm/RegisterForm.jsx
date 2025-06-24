@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useContext } from 'react';
+import { UserContext } from '../../../context/UserContext/UserState';
 
 export const RegisterForm = () => {
   const initialValue = {
@@ -9,6 +11,7 @@ export const RegisterForm = () => {
   };
 
   const [data, setData] = useState(initialValue);
+  const { register } = useContext(UserContext);
 
   const clearState = () => {
     setData(initialValue);
@@ -20,7 +23,7 @@ export const RegisterForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('sending data...' + data.name + ' ' + data.last_name + ' ' + data.email + ' ' + data.password);
+    register(data);
     clearState();
   };
 
