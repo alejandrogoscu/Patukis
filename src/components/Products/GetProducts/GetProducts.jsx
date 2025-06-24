@@ -1,9 +1,12 @@
 import { useContext, useEffect } from "react";
 import { ProductContext } from "../../../context/ProductContext/ProductState";
 import "./getProducts.css";
+import { useNavigate } from "react-router-dom";
 
 const GetProducts = () => {
   const { products, getProducts } = useContext(ProductContext);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getProducts();
@@ -21,7 +24,7 @@ const GetProducts = () => {
             <div className="prod-info">
               <p className="card-title"> {product.name}</p>
               <p className="card-des">€{product.price.toFixed(2)}</p>
-              <button>Ver detalles</button>
+              <button onClick={() => navigate(`/products/${product._id}`)}>Ver detalles</button>
             </div>
           </div>
         ))}
