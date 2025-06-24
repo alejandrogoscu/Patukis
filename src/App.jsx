@@ -1,13 +1,20 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import { RegisterForm } from './components/User/RegisterForm/RegisterForm';
 import { UserProvider } from './context/UserContext/UserState';
+import { RegisterConfirmation } from './components/User/RegisterConfirmation/RegisterConfirmation';
 
 function App() {
   return (
     <>
-      <UserProvider>
-        <RegisterForm />
-      </UserProvider>
+      <BrowserRouter>
+        <UserProvider>
+          <Routes>
+            <Route path="/" element={<RegisterForm />} />
+            <Route path="/confirmation" element={<RegisterConfirmation />} />
+          </Routes>
+        </UserProvider>
+      </BrowserRouter>
     </>
   );
 }

@@ -12,6 +12,7 @@ export const UserProvider = ({ children }) => {
       const res = await axios.post('https://patukisapi.onrender.com/users', userData);
       console.log('Respuesta:', res.data);
       dispatch({ type: 'REGISTER', payload: res.data });
+      return true;
     } catch (error) {
       console.error(error);
     }
