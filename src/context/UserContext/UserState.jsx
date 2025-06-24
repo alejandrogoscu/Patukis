@@ -18,5 +18,16 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  return <UserContext.Provider value={{ user: state.user, register }}>{children}</UserContext.Provider>;
+  const getUserProfile = async () => {
+    try {
+      const token =
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NTZlNmRlZTlhNDM5ZDAyMzk3NDVhZiIsImlhdCI6MTc1MDUyNTcwN30.dNDPyZuqZdIWVs3efrZ62ahOR4bG9vYvFHFoqE6DzG8'; // HARDCODEADO AHORA MISMO.
+      const res = await axios.get('https://patukisapi.onrender.com/users/me', { headers: { Authorization: token } });
+      dispatch({ type: 'GET_USER', payload: res.data });
+    } catch (error) {
+      console.error('Error al obtener el usuario:', error);
+    }
+  };
+
+  return <UserContext.Provider value={{ user: state.user, register, getUserProfile }}>{children}</UserContext.Provider>;
 };
