@@ -1,5 +1,5 @@
 
-
+import { NavLink } from 'react-router-dom';
 
 import patoIcono from '../../assets/icons/patito.svg'
 import carritoIcono from '../../assets/icons/Carrito.svg'
@@ -14,32 +14,40 @@ function NavbarDeskopUser() {
     <nav className="navbar-container">
       <ul className="navbar-list">
 
-        <li className="navbar-item">
-          <a href={link} className="navbar-link">
+            <li className="navbar-item">
+         <NavLink to="/" className={({ isActive }) =>
+              isActive ? 'navbar-link active' : 'navbar-link'
+            }> 
             <img src={homeIcono} alt="Home" className="navbar-icon-img" />
-            HOME </a>
-        </li>
+            HOME
+          </NavLink>
+          </li>
 
-        <li className="navbar-item">
-          <a href={link} className="navbar-link">
+          <li className="navbar-item">
+ <NavLink to="/Productos" className="navbar-link"> 
             <img src={patoIcono} alt="Productos" className="navbar-icon-img" />
-            PRODUCTOS </a>
+            PRODUCTOS
+          </NavLink>
+          </li>
+        
 
-        </li>
-
-        <li className="navbar-item">
-          <a href={link} className="navbar-link">
+ <li className="navbar-item">
+ <NavLink to="/Carrito" className="navbar-link"> 
             <img src={carritoIcono} alt="Carrito" className="navbar-icon-img" />
-            CARRITO </a>
+            CARRITO
+          </NavLink>
+          </li>
+        
+ <li className="navbar-item">
+ <NavLink to="/Perfil" className="navbar-link"> 
+            <img src={personIcono} alt="Perfil" className="navbar-icon-img" />
+            PERFIL
+          </NavLink>
+          </li>
+        
+      
 
-        </li>
-
-        <li className="navbar-item">
-          <a href={link} className="navbar-link">
-            <img src={personIcono} alt="Usuario" className="navbar-icon-img" />
-            PERFIL </a>
-
-        </li>
+     
 
       </ul>
     </nav>

@@ -1,27 +1,36 @@
-import logo from './assets/Logo_1.svg';
-import patos from './assets/paticontructors.png';
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+
+
 import './App.css';
-import NavbarDeskopUser from './components/NavbarDeskopUser/NavbarDeskopUser';
-import './components/NavbarDeskopUser/NavbarDeskopUser.scss';
-import NavbarDeskopAdmin from './components/NavbarDeskopAdmin/NavbarDeskopAdmin';
-import NavbarMobileUser from './components/NavbarMobileUser/NavbarMobileUser';
-import './components/NavbarMobileUser/NavbarMobileUser.scss';
-import NavbarMobileAdmin from './components/NavbarMobileAdmin/NavbarMobileAdmin';
+
+import Home from './components/Home/Home';
+import Carrito from './components/Carrito/Carrito';
+import Productos from "./components/Productos/Productos";
+import Perfil from "./components/Perfil/Perfil";
+import Header from "./components/Header/Header";
+import Ajustes from "./components/Ajustes/Ajustes";
+
+
 
 
 
 
 function App() {
   return (
-    <div className="contenedor">
-       <img src={logo} />
-      <img src={patos} width="640px" />
-      <h2 className="text">¡Próximamente!</h2>
-      <NavbarDeskopUser/>
-      <NavbarDeskopAdmin/>
-      <NavbarMobileUser/>
-      <NavbarMobileAdmin/>
-     </div>
+    <>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Carrito" element={<Carrito />} />
+          <Route path="/Productos" element={<Productos />} />
+          <Route path="/Perfil" element={<Perfil />} />
+          <Route path="/Ajustes" element={<Ajustes />} />
+
+        </Routes>
+      </BrowserRouter>
+
+    </>
   );
 }
 
