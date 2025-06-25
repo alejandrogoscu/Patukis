@@ -8,7 +8,7 @@ export const Profile = () => {
     getUserProfile();
   }, []);
 
-  if (!user) return <p>No se encontraron datos del usuario.</p>;
+  if (!user) return <p className="profile__msgerror">No se encontraron datos del usuario.</p>;
 
   return (
     <div className="profile__container">
@@ -38,28 +38,28 @@ export const Profile = () => {
       <section className="profile__whistlist">
         <h3 className="profile__whistlist--title">Lista de Deseos</h3>
         {user.wishlist && user.wishlist.length > 0 ? (
-          <ul>
+          <ul className="profile__whistlist--list">
             {user.wishlist.map((item) => (
-              <li key={item._id}>
-                {item.name} - {item.price}
+              <li className="profile__whistlist--item" key={item._id}>
+                {item.name} - {item.price.toFixed(2)}
               </li>
             ))}
           </ul>
         ) : (
-          <p>La lista de deseos esta vacia</p>
+          <p className="profile__whistlist--msg">La lista de deseos esta vacia</p>
         )}
       </section>
 
       <section className="profile__orders">
         <h3 className="profile__orders--title">Pedidos Realizados</h3>
         {user.orders && user.orders.length > 0 ? (
-          <ul>
+          <ul className="profile__orders--list">
             {user.orders.map((item) => (
-              <li key={item}>
-                <ul>
+              <li className="profile__orders--item" key={item}>
+                <ul className="profile__orders--prodlist">
                   {item.products.map((producto) => (
-                    <li key={producto._id}>
-                      {producto.name} - {producto.price} €
+                    <li className="profile__orders--proditem" key={producto._id}>
+                      {producto.name} - {producto.price.toFixed(2)} €
                     </li>
                   ))}
                 </ul>
@@ -67,7 +67,7 @@ export const Profile = () => {
             ))}
           </ul>
         ) : (
-          <p>La lista de pedidos está vacía</p>
+          <p className="profile__orders--msg">La lista de pedidos está vacía</p>
         )}
       </section>
     </div>
