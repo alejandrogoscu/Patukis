@@ -161,3 +161,31 @@
   border-radius: 20px;
   cursor: pointer;
 }
+
+/* ----------------------- BARRA SCROLL */
+
+.profile__whistlist--list {
+  --sb-track-color: #1f1f1f;
+  --sb-thumb-color: #4fc3f7;
+  --sb-size: 10px;
+}
+
+.profile__whistlist--list::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.profile__whistlist--list::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 20px;
+}
+
+.profile__whistlist--list::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 20px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .profile__whistlist--list {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
