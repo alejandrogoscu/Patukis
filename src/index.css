@@ -20,5 +20,6 @@
   --amarillo: #ffeb3b;
   --oscuro: #1f1f1f;
 
+  box-sizing: border-box;
   place-items: center;
 }

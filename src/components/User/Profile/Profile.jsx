@@ -38,7 +38,7 @@ export const Profile = () => {
               {user.wishlist.map((item) => (
                 <li className="profile__whistlist--item" key={item._id}>
                   <img className="profile__whistlist--image" src={item.image} />
-                  {item.name} - {item.price.toFixed(2)}
+                  {item.name} - €{item.price.toFixed(2)}
                 </li>
               ))}
             </ul>
@@ -46,7 +46,7 @@ export const Profile = () => {
             <p className="profile__whistlist--msg">La lista de deseos esta vacia</p>
           )}
         </section>
-        <section className="profile__orders">
+        {/* <section className="profile__orders">
           <h3 className="profile__orders--title">Pedidos Realizados</h3>
           {user.orders && user.orders.length > 0 ? (
             <ul className="profile__orders--list">
@@ -66,7 +66,7 @@ export const Profile = () => {
           ) : (
             <p className="profile__orders--msg">La lista de pedidos está vacía</p>
           )}
-        </section>
+        </section> */}
       </div>
     </div>
   );
