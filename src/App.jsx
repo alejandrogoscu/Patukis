@@ -7,10 +7,8 @@ import Home from './components/Home/Home';
 import Carrito from './components/Carrito/Carrito';
 import Productos from "./components/Productos/Productos";
 import Perfil from "./components/Perfil/Perfil"
-import Header from "./components/Header/Header";
 import Ajustes from "./components/Ajustes/Ajustes";
-//import FooterDeskop from "./components/FooterDeskop/FooterDeskop";
-import FooterMobile from "./components/FooterMobile/FooterMobile";
+import Responsive from "./components/Responsive/Responsive";
 
 
 
@@ -21,7 +19,8 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
+      
+        <Responsive>
           <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Carrito" element={<Carrito />} />
@@ -30,8 +29,9 @@ function App() {
           <Route path="/Ajustes" element={<Ajustes />} />
 
         </Routes>
-{/*<FooterDeskop/>*/}
-        <FooterMobile/>
+
+       
+          </Responsive>
       </BrowserRouter>
 
     </>

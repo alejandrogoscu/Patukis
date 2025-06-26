@@ -5,6 +5,7 @@ import homeIcono from '../../assets/icons/Home.svg'
 import personIcono from '../../assets/icons/Person.svg'
 import patoIcono from '../../assets/icons/patito.svg'
 import carritoIcono from '../../assets/icons/Carrito.svg'
+import '../NavbarMobileUser/NavbarMobileUser.scss';
 
 
 let link = " ";

@@ -28,11 +28,11 @@ $item-gap-mobile: 20px;
   padding: 0;
   margin: 0; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  position: fixed; // Fija la posición en la pantalla
-  bottom: 10px;       // Lo pega a la parte inferior
-  //left: 50%;         // Lo pega al borde izquierdo
+  position: fixed;
+  bottom: 10px;       
   z-index: 1000;
    transform: translate(-50%, -50%);
+    justify-content: space-evenly; 
    
   
     .navbar-list2 {
@@ -59,6 +59,8 @@ $item-gap-mobile: 20px;
    
     text-align: center;
     flex-basis: auto;
+   
+     flex-grow: 1;
 
   .navbar-link2 {
     display: flex;
@@ -66,10 +68,11 @@ $item-gap-mobile: 20px;
     justify-content: center;
     align-items: center;
 
+
     color: $text-color;
     text-decoration: none;
     font-family: 'Fredoka', sans-serif;
-    font-size: $font-size-mobile; /* Tamaño de fuente para móvil */
+    font-size: $font-size-mobile; 
    padding: 5px 0; 
  
 
@@ -81,8 +84,7 @@ $item-gap-mobile: 20px;
    
     }
     &.active {
-       // Puedes usar $hover-color, o $active-item-color si lo defines
-    .navbar-icon-img2 { 
+     .navbar-icon-img2 { 
         filter: opacity(0.1); 
         }
     }

@@ -1,63 +1,57 @@
 $primary-blue: #004cff;
-$patukis-text-color: #FFD700; // Un amarillo/dorado para el texto "PATUKIS"
-$patukis-shadow-color: #333333; // Un color oscuro para la sombra/efecto 3D de "PATUKIS"
-$text-color: white;
+$text-color: #FFD700; 
+$patukis-shadow-color: #333333; 
 
 
-.main-footer-mobile { // Clase principal del footer (coincide con el JSX)
-  background-color:$primary-blue;  // Fondo naranja
-  color: $text-color; // Color de texto por defecto (blanco)
-  padding: 15px 20px; // Espacio interno: 15px arriba/abajo, 20px izquierda/derecha
-  width: 100%; // Ocupa todo el ancho disponible
-  box-sizing: border-box; // Incluye padding y border en el ancho/alto del elemento
-
+.main-footer-mobile { 
+  background-color:$primary-blue;  
+  color: $text-color; 
+  padding: 15px 20px; 
+  width: 100%; 
+  box-sizing: border-box; 
+  position: fixed; 
+  top: 0;        
+  left: 0;         
+  z-index: 1000;   
   
-  // PROPIEDADES CLAVE PARA POSICIONARLO ARRIBA Y FIJO EN LA PANTALLA
-  position: fixed; // Permite posicionar el elemento con respecto al viewport (ventana de visualización)
-  top: 0;          // Lo pega al borde superior de la ventana (0px desde arriba)
-  left: 0;         // Lo pega al borde izquierdo de la ventana (0px desde la izquierda)
-  z-index: 1000;   // Asegura que esté por encima de casi todos los demás elementos.
   
-  // Sombra sutil para darle un efecto de elevación (opcional)
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
 
-  .footer-content-mobile{ // ESTE ES EL CONTENEDOR FLEXBOX
-    display: flex;             // Habilita Flexbox
-    justify-content: space-between; // ¡CRUCIAL! Empuja el primer hijo (left-section) a la izquierda y el segundo hijo (rights) a la derecha.
-    align-items: center;       // Centra verticalmente los elementos hijos directos (left-section y rights)
-    max-width: 1200px;         // Opcional: Limita el ancho máximo del contenido interno para que no se extienda demasiado en pantallas grandes
-    margin: 0 auto;            // Opcional: Centra el contenedor 'footer-content' si tiene un max-width
-    // No necesitas padding aquí si el main-footer ya tiene padding horizontal.
+  .footer-content-mobile{ 
+    display: flex;             
+    justify-content: space-between; 
+    align-items: center;       
+    max-width: 1200px;         
+    margin: 0 auto;           
+   
   }
 
-  .footer-section-mobile  { // Agrupa el logo y el texto "PATUKIS"
-    display: flex;      // Habilita Flexbox para alinear el logo y el texto "PATUKIS" dentro de esta sección
-    align-items: center; // Centra verticalmente el logo y el texto
-    gap: 10px;          // Espacio de 10px entre el logo y el texto "PATUKIS"
+  .footer-section-mobile  { 
+    display: flex;     
+    align-items: center; 
+    gap: 10px;          
   }
 
-  .footer-logo-mobile  { // Estilos para la imagen del logo
-    width: 100px; // Tamaño del logo (ajusta según tus necesidades)
-    height: auto; // Mantiene la proporción
-    // No uses 'position: absolute;' aquí a menos que quieras que el logo ignore el flujo de los demás elementos dentro de footer-left-section
-  }
-  
-  
-  .footer-rights-mobile  { // Estilos para el texto de derechos de autor
-    font-size: 0.8rem; // Tamaño de fuente más pequeño
-    margin: 0; // Elimina el margen por defecto del párrafo
-    text-align: right; // Alinea el texto DENTRO de este párrafo a la derecha.
-    color: $text-color; // Color blanco
-  }
-
-  // Media queries para pantallas más pequeñas (móviles)
-  @media (max-width: 768px) {
-    padding: 10px 15px; // Reduce el padding para pantallas pequeñas
+  .footer-logo-mobile  { 
+    width: 100px; 
+    height: auto; 
     
+  }
+  
+  
+  .footer-rights-mobile  { 
+    font-size: 0.8rem; 
+    margin: 0; 
+    text-align: right;
+    color: $text-color; 
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px 15px; 
     .footer-content-mobile  {
-      flex-direction: column; // ¡IMPORTANTE! Apila los elementos (left-section y rights) verticalmente en móvil
-      text-align: center; // Centra el texto dentro de los elementos apilados
-      gap: 10px; // Espacio entre los elementos apilados
+      flex-direction: column; 
+      text-align: center; 
+      gap: 10px; 
     }
   }
 }

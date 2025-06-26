@@ -6,6 +6,8 @@ import carritoIcono from '../../assets/icons/Carrito.svg'
 import personIcono from '../../assets/icons/Person.svg'
 import homeIcono from '../../assets/icons/Home.svg'
 
+import '../NavbarDeskopUser/NavbarDeskopUser.scss';
+
 
 let link = " ";
 
