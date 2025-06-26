@@ -2,11 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ProductContext } from "../../../context/ProductContext/ProductState";
 import "./getOneProduct.css";
+import { Link } from "react-router-dom";
 
 const GetOneProduct = () => {
   const { _id } = useParams();
 
-  const { getOneProduct, product } = useContext(ProductContext);
+  const { getOneProduct, product, cart, addToCart } = useContext(ProductContext);
 
   const [liked, setLiked] = useState(false);
 
@@ -41,7 +42,7 @@ const GetOneProduct = () => {
             favorite
           </span>
         </button>
-        <button>Comprar ahora</button>
+        <button onClick={() => addToCart(product)}>Añadir al carrito</button>
       </div>
       <div className="prod-info">
         <h1>{product.name}</h1>
@@ -50,7 +51,11 @@ const GetOneProduct = () => {
       </div>
       <div>
         <h3>Reseñas</h3>
-        <div className="review-container"></div>
+        <div className="review-container">
+          <Link to={`/products/cart`}>
+            <button>Ir al carrito</button>
+          </Link>
+        </div>
       </div>
     </div>
   );

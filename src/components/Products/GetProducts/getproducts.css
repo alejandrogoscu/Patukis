@@ -73,3 +73,9 @@ button {
   border-radius: 30px;
   background-color: #ff9800;
 }
+
+.filters-container {
+  display: flex;
+  margin: 2rem;
+  justify-content: center;
+}
