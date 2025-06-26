@@ -1,14 +1,21 @@
-import logo from './assets/Logo_1.svg';
-import patos from './assets/paticontructors.png';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
+import { RegisterForm } from './components/User/RegisterForm/RegisterForm';
+import { UserProvider } from './context/UserContext/UserState';
+import { RegisterConfirmation } from './components/User/RegisterConfirmation/RegisterConfirmation';
 
 function App() {
   return (
-    <div className="contenedor">
-      <img src={logo} />
-      <img src={patos} width="640px" />
-      <h2 className="text">¡Próximamente!</h2>
-    </div>
+    <>
+      <BrowserRouter>
+        <UserProvider>
+          <Routes>
+            <Route path="/register" element={<RegisterForm />} />
+            <Route path="/confirmation" element={<RegisterConfirmation />} />
+          </Routes>
+        </UserProvider>
+      </BrowserRouter>
+    </>
   );
 }
 
