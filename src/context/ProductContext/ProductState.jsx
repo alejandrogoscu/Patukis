@@ -57,6 +57,13 @@ export const ProductProvider = ({ children }) => {
     dispatch({ type: "CLEAR_CART" });
   };
 
+  const removeFromCart = (productId) => {
+    dispatch({
+      type: "REMOVE_FROM_CART",
+      payload: productId,
+    });
+  };
+
   return (
     <ProductContext.Provider
       value={{
@@ -67,6 +74,7 @@ export const ProductProvider = ({ children }) => {
         getOneProduct,
         addToCart,
         clearCart,
+        removeFromCart,
       }}
     >
       {children}

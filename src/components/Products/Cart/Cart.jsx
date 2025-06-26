@@ -2,9 +2,10 @@ import { useContext } from "react";
 import { ProductContext } from "../../../context/ProductContext/ProductState";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "./cart.css";
 
 const Cart = () => {
-  const { cart, clearCart } = useContext(ProductContext);
+  const { cart, clearCart, removeFromCart } = useContext(ProductContext);
   const API_URL = "https://patukisapi.onrender.com/orders";
 
   if (!cart || cart.length === 0) {
@@ -30,21 +31,29 @@ const Cart = () => {
       console.error("Error al crear el pedido:", error);
     }
   };
+  const total = cart.reduce((acc, item) => acc + item.price, 0);
 
   return (
-    <div>
-      {cart.map((item, i) => (
-        <div key={i}>
-          <img src={item.image} alt={item.name} />
-          <span>{item.name}</span>
-          <span>{item.price.toFixed(2)} €</span>
-        </div>
-      ))}
-      <button onClick={clearCart}>Vaciar carrito</button>
-      <button onClick={createNewOrder}>Checkout</button>
+    <div className="cart-body-container">
       <Link to="/products">
         <button>Volver a productos</button>
       </Link>
+      <h1>Estos son tus productos</h1>
+      {cart.map((item, i) => (
+        <div key={i} className="cart-prod-container">
+          <img src={item.image} alt={item.name} className="cart-img-prod" />
+          <span>{item.name}</span>
+          <span>{item.price.toFixed(2)} €</span>
+          <button onClick={() => removeFromCart(item._id)} className="cart-remove-btn">
+            X
+          </button>
+        </div>
+      ))}
+      <h3>Total compra: {total.toFixed(2)} €</h3>
+      <div className="cart-btns-container">
+        <button onClick={clearCart}>Vaciar carrito</button>
+        <button onClick={createNewOrder}>Confirmar pedido</button>
+      </div>
     </div>
   );
 };
