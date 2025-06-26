@@ -19,7 +19,15 @@
   --naranja: #ff9800;
   --amarillo: #ffeb3b;
   --oscuro: #1f1f1f;
+}
 
+html,
+body,
+#root {
   box-sizing: border-box;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }

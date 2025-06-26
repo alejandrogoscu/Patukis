@@ -1,10 +1,6 @@
-.profile__msgerror {
-}
-
 .profile__container {
-  max-width: 800px;
+  width: 80%;
   display: flex;
-  padding: 15px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -13,14 +9,13 @@
 }
 
 .profile__title {
-  align-self: start;
   font-size: 1.6rem;
 }
 
 .profile__info--container {
+  width: 100%;
   max-width: 600px;
-  padding: 10px;
-  gap: 20px;
+  padding: 30px;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -28,12 +23,12 @@
 }
 
 .profile__info {
+  width: 80%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
   flex-flow: row wrap;
-  width: 80%;
   padding: 15px;
   border: 1px solid var(--naranja);
   border-radius: 25px;
@@ -46,7 +41,7 @@
 }
 
 .profile__img {
-  width: 130px;
+  width: 120px;
 }
 
 .profile__text--container {
@@ -64,6 +59,7 @@
 }
 
 .profile__whistlist {
+  width: 100%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -71,17 +67,20 @@
 }
 
 .profile__whistlist--title {
+  margin-top: 50px;
+  font-size: 1.3rem;
 }
 
 .profile__whistlist--list {
-  width: 320px;
+  width: 100%;
   display: flex;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: space-around;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  scroll-padding-left: calc(50% - 80px);
-  gap: 10px;
+  margin-inline: auto;
+  scroll-padding: 0 calc(50% - 70px);
+  gap: 2px;
   padding: 0px 10px 14px 0px;
   list-style: none;
 
@@ -89,57 +88,6 @@
 }
 
 .profile__whistlist--image {
-  width: 140px;
-  border-radius: 10px;
-  margin-bottom: 12px;
-  overflow: hidden;
-  background-color: #ff9800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  flex: 0 0 auto;
-  scroll-snap-align: start;
-  gap: 12px;
-}
-
-.profile__whistlist--item {
-  margin: 15px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--azul);
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-.profile__whistlist--msg {
-}
-
-.profile__orders {
-}
-
-.profile__orders--title {
-}
-
-.profile__orders--list {
-  list-style: none;
-  padding-inline-start: 0px;
-  color: var(--blanco);
-}
-
-.profile__orders--item {
-}
-
-.profile__orders--prodlist {
-  list-style: none;
-  padding-inline-start: 0px;
-  color: var(--blanco);
-}
-
-.profile__orders--prodimg {
   width: 120px;
   border-radius: 10px;
   margin-bottom: 12px;
@@ -148,18 +96,75 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 auto;
+
+  gap: 5px;
 }
 
-.profile__orders--proditem {
-  margin: 15px;
-  padding: 20px;
+.profile__whistlist--item {
+  margin-inline: auto;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  scroll-snap-align: center;
   background-color: var(--azul);
   border-radius: 20px;
   cursor: pointer;
+}
+
+.profile__whistlist--msg {
+  color: var(--naranja);
+}
+
+.profile__orders--title {
+  margin-top: 50px;
+  font-size: 1.3rem;
+}
+
+.profile__orders--list {
+  list-style: none;
+  padding: 8px;
+  padding-inline-start: 0px;
+  color: var(--blanco);
+}
+
+.profile__orders--item {
+  border-top: 2px solid var(--azul);
+  padding: 8px;
+  color: var(--naranja);
+}
+
+.profile__orders--prodlist {
+  list-style: none;
+  padding-inline-start: 0px;
+
+  margin-bottom: 10px;
+}
+
+.profile__orders--prodimg {
+  width: 70px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile__orders--proditem {
+  padding: 6px;
+  display: flex;
+  flex-direction: row;
+  color: var(--blanco);
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile__orders--msg {
+  color: var(--naranja);
 }
 
 /* ----------------------- BARRA SCROLL */
@@ -167,7 +172,7 @@
 .profile__whistlist--list {
   --sb-track-color: #1f1f1f;
   --sb-thumb-color: #4fc3f7;
-  --sb-size: 10px;
+  --sb-size: 3px;
 }
 
 .profile__whistlist--list::-webkit-scrollbar {
@@ -176,12 +181,12 @@
 
 .profile__whistlist--list::-webkit-scrollbar-track {
   background: var(--sb-track-color);
-  border-radius: 20px;
+  border-radius: 25px;
 }
 
 .profile__whistlist--list::-webkit-scrollbar-thumb {
   background: var(--sb-thumb-color);
-  border-radius: 20px;
+  border-radius: 25px;
 }
 
 @supports not selector(::-webkit-scrollbar) {

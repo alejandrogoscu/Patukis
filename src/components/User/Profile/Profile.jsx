@@ -46,17 +46,18 @@ export const Profile = () => {
             <p className="profile__whistlist--msg">La lista de deseos esta vacia</p>
           )}
         </section>
-        {/* <section className="profile__orders">
+        <section className="profile__orders">
           <h3 className="profile__orders--title">Pedidos Realizados</h3>
           {user.orders && user.orders.length > 0 ? (
             <ul className="profile__orders--list">
               {user.orders.map((item) => (
                 <li className="profile__orders--item" key={item}>
+                  Pedido: {item._id}
                   <ul className="profile__orders--prodlist">
                     {item.products.map((producto) => (
                       <li className="profile__orders--proditem" key={producto._id}>
-                        <img className="profile__orders--prodimg" src={producto.image} /> -{producto.name} -{' '}
-                        {producto.price.toFixed(2)} €
+                        <img className="profile__orders--prodimg" src={producto.image} /> <span>{producto.name}</span>{' '}
+                        <span>€{producto.price.toFixed(2)}</span>
                       </li>
                     ))}
                   </ul>
@@ -66,7 +67,7 @@ export const Profile = () => {
           ) : (
             <p className="profile__orders--msg">La lista de pedidos está vacía</p>
           )}
-        </section> */}
+        </section>
       </div>
     </div>
   );
