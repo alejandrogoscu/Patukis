@@ -9,6 +9,11 @@ export const userReducer = (state, action) => {
         ...state,
         user: action.payload,
       };
+    case 'GET_USER':
+      return {
+        ...state,
+        user: action.payload,
+      };
     default:
       return state;
   }

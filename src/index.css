@@ -18,4 +18,8 @@
   --azul: #4fc3f7;
   --naranja: #ff9800;
   --amarillo: #ffeb3b;
+  --oscuro: #1f1f1f;
+
+  box-sizing: border-box;
+  place-items: center;
 }
