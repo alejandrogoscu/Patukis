@@ -17,7 +17,7 @@ $navbar-height-mobile: 60px;
   margin: 0 auto; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: fixed; // Fija la posición en la pantalla
-  bottom: 10px;       // Lo pega a la parte inferior
+  top: 10px;       // Lo pega a la parte inferior
   left: 0;         // Lo pega al borde izquierdo
   z-index: 1000; 
   
