@@ -52,6 +52,7 @@ export const UserProvider = ({ children }) => {
     } finally {
       dispatch({ type: "LOGOUT" });
       localStorage.removeItem("token");
+      localStorage.removeItem("user");
     }
   };
 
