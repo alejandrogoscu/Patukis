@@ -12,38 +12,35 @@ function NavbarDeskopAdmin() {
   return (
     <nav className="navbar-container">
       <ul className="navbar-list">
-         
-                    <li className="navbar-item">
-                                  <NavLink to="/" className={({ isActive }) =>
-                                       isActive ? 'navbar-link active' : 'navbar-link'
-                                     }> 
-                                     <img src={homeIcono} alt="Home" className="navbar-icon-img" />
-                                     HOME
-                                   </NavLink>
-                                   </li>
-                         <li className="navbar-item">
-                        <NavLink to="/Productos" className="navbar-link"> 
-                           <img src={patoIconoCasco} alt="Productos" className="navbar-icon-img" />
-                           PRODUCTOS
-                         </NavLink>
-                         </li>
+
         <li className="navbar-item">
-                        <NavLink to="/Ajustes" className="navbar-link"> 
-                           <img src={SettingsIcono} alt="Ajustes" className="navbar-icon-img" />
-                           AJUSTES
-                         </NavLink>
-                         </li>
-       
-     
-               <li className="navbar-item">
-               <NavLink to="/Perfil" className="navbar-link"> 
-                          <img src={AdminIconoCasco} alt="Perfil" className="navbar-icon-img" />
-                          PERFIL
-                        </NavLink>
-                        </li>
-                  
-       
-      
+          <NavLink to="/" className={({ isActive }) =>
+            isActive ? 'navbar-link active' : 'navbar-link'
+          }>
+            <img src={homeIcono} alt="Home" className="navbar-icon-img" />
+            HOME
+          </NavLink>
+        </li>
+        <li className="navbar-item">
+          <NavLink to="/Productos" className="navbar-link">
+            <img src={patoIconoCasco} alt="Productos" className="navbar-icon-img" />
+            PRODUCTOS
+          </NavLink>
+        </li>
+        <li className="navbar-item">
+          <NavLink to="/Ajustes" className="navbar-link">
+            <img src={SettingsIcono} alt="Ajustes" className="navbar-icon-img" />
+            AJUSTES
+          </NavLink>
+        </li>
+
+
+        <li className="navbar-item">
+          <NavLink to="/Perfil" className="navbar-link">
+            <img src={AdminIconoCasco} alt="Perfil" className="navbar-icon-img" />
+            PERFIL
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

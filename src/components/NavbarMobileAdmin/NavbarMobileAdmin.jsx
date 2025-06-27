@@ -11,14 +11,14 @@ function NavbarMobileAdmin() {
     return (
         <nav className="navbar-container2">
             <ul className="navbar-list2">
-                  <li className="navbar-item2">
-                                <NavLink to="/" className={({ isActive }) =>
-                                     isActive ? 'navbar-link2 active' : 'navbar-link2'
-                                   }> 
-                                   <img src={homeIcono} alt="Home" className="navbar-icon-img2" />
-                                
-                                 </NavLink>
-                                 </li>
+                <li className="navbar-item2">
+                    <NavLink to="/" className={({ isActive }) =>
+                        isActive ? 'navbar-link2 active' : 'navbar-link2'
+                    }>
+                        <img src={homeIcono} alt="Home" className="navbar-icon-img2" />
+
+                    </NavLink>
+                </li>
                 <li className="navbar-item2">
                     <NavLink to="/Productos" className="navbar-link2">
                         <img src={patoIcono} alt="Productos" className="navbar-icon-img2" />

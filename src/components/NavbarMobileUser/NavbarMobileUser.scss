@@ -1,16 +1,14 @@
-
-
 // Variables para facilitar el ajuste de estilos
 $primary-orange: #ff9900;
 $text-color: white;
 $hover-color: rgba(248, 245, 245, 0.338);
- $active-item-color: rgba(133, 130, 130, 0.338);
+$active-item-color: rgba(133, 130, 130, 0.338);
 
 // Valores para escritorio 
 $icon-size-desktop: 24px;
 $font-size-desktop: 15px;
 $navbar-height-desktop: 40px;
-$item-gap-desktop: 20px; 
+$item-gap-desktop: 20px;
 $icon-text-gap: 8px;
 
 // Valores para móvil 
@@ -22,135 +20,133 @@ $item-gap-mobile: 20px;
 
 
 .navbar-container2 {
-  width: 100%; 
+  width: 100%;
   background-color: $primary-orange;
-  border-radius: 0; 
+  border-radius: 0;
   padding: 0;
-  margin: 0; 
+  margin: 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: fixed;
-  bottom: 10px;       
+  bottom: 10px;
   z-index: 1000;
-   transform: translate(-50%, -50%);
-    justify-content: space-evenly; 
-   
-  
-    .navbar-list2 {
+  transform: translate(-50%, -50%);
+  justify-content: space-evenly;
+
+
+  .navbar-list2 {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: space-around; 
+    justify-content: space-around;
     align-items: center;
-    height: $navbar-height-mobile; 
-    gap: $item-gap-desktop; 
-    flex-wrap: wrap; 
+    height: $navbar-height-mobile;
+    gap: $item-gap-desktop;
+    flex-wrap: wrap;
   }
-          .navbar-icon-img2 { 
-    width: 30px;  
-    height: 25px; 
-    object-fit: contain; 
-    
-    
-  
+
+  .navbar-icon-img2 {
+    width: 30px;
+    height: 25px;
+    object-fit: contain;
+
+
+
   }
 
   .navbar-item2 {
-   
+
     text-align: center;
     flex-basis: auto;
-   
-     flex-grow: 1;
+    flex-grow: 1;
 
-  .navbar-link2 {
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
-    align-items: center;
+    .navbar-link2 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
 
-    color: $text-color;
-    text-decoration: none;
-    font-family: 'Fredoka', sans-serif;
-    font-size: $font-size-mobile; 
-   padding: 5px 0; 
- 
+      color: $text-color;
+      text-decoration: none;
+      font-family: 'Fredoka', sans-serif;
+      font-size: $font-size-mobile;
+      padding: 5px 0;
 
-     &:hover {
-      .navbar-icon-img2 { 
-        filter: opacity(0.7); 
+
+      &:hover {
+        .navbar-icon-img2 {
+          filter: opacity(0.7);
         }
-      
-   
-    }
-    &.active {
-     .navbar-icon-img2 { 
-        filter: opacity(0.1); 
+
+
+      }
+
+      &.active {
+        .navbar-icon-img2 {
+          filter: opacity(0.1);
         }
-    }
+      }
 
 
-    svg {
-      font-size: $icon-size-mobile; 
-      margin-right: 0; 
-      margin-bottom: $icon-text-gap; 
-      fill: currentColor;
-      margin-top: 8px;
-    }
-
-    img.navbar-icon {
-      width: $icon-size-mobile;
-      height: $icon-size-mobile;
-      margin-right: 0;
-      margin-bottom: $icon-text-gap;
-      object-fit: contain;
+      svg {
+        font-size: $icon-size-mobile;
+        margin-right: 0;
+        margin-bottom: $icon-text-gap;
+        fill: currentColor;
         margin-top: 8px;
+      }
+
+      img.navbar-icon {
+        width: $icon-size-mobile;
+        height: $icon-size-mobile;
+        margin-right: 0;
+        margin-bottom: $icon-text-gap;
+        object-fit: contain;
+        margin-top: 8px;
+      }
     }
   }
-}
 
 
-  
+
 
   @media (max-width: 768px) {
-    // Ajusta el ancho para móvil. Por ejemplo, 90% para dejar un margen a los lados.
-    width: 90%; // <-- Nuevo ancho para móvil para que no se pegue a los bordes. Ajusta a tu gusto.
-
-    // Centrar horizontalmente el elemento con position: fixed
-    left: 50%; /* Mueve el borde izquierdo del elemento al centro de la pantalla */
-    transform: translateX(-50%); /* Desplaza el elemento hacia la izquierda la mitad de su propio ancho, centrándolo perfectamente */
-
-    border-radius: 25px; // Mantén los bordes redondeados si quieres que "flote"
+    
+    width: 90%; 
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 25px; 
     padding: 0;
-   
+
 
     .navbar-container2 {
-    width: 100px; 
-    margin: 0 auto; 
-    border-radius: 25px;
+      width: 100px;
+      margin: 0 auto;
+      border-radius: 25px;
 
 
     }
 
     .navbar-list2 {
-      justify-content: center; 
-      height: $navbar-height-desktop; 
-      gap: $item-gap-desktop; 
-      flex-wrap: nowrap; 
+      justify-content: center;
+      height: $navbar-height-desktop;
+      gap: $item-gap-desktop;
+      flex-wrap: nowrap;
     }
 
     .navbar-item2 {
-      flex-basis: auto; 
+      flex-basis: auto;
     }
 
     .navbar-link2 {
-      flex-direction: row; 
+      flex-direction: row;
       font-size: $font-size-desktop;
-      padding: 2px $icon-text-gap; 
+      padding: 2px $icon-text-gap;
 
       svg {
-        font-size: $icon-size-desktop; 
-        margin-right: $icon-text-gap; 
+        font-size: $icon-size-desktop;
+        margin-right: $icon-text-gap;
         margin-bottom: 0;
       }
 
@@ -160,24 +156,26 @@ $item-gap-mobile: 20px;
         margin-right: $icon-text-gap;
         margin-bottom: 0;
       }
-       &:hover {
-     
-      .navbar-icon-img2 { 
-        filter: opacity(0.7); 
+
+      &:hover {
+
+        .navbar-icon-img2 {
+          filter: opacity(0.7);
         }
       }
-       &.active {
-      .navbar-icon-img2 { 
-        filter: opacity(0.1); 
+
+      &.active {
+        .navbar-icon-img2 {
+          filter: opacity(0.1);
         }
-    }
+      }
     }
   }
 
   // Media Query para tablets
   @media (min-width: 481px) and (max-width: 768px) {
-   border-radius: 25px;
-   
+    border-radius: 25px;
+
     .navbar-list2 {
       justify-content: space-evenly;
     }
