@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 
-
 import NavbarDeskopUser from '../NavbarDeskopUser/NavbarDeskopUser';
 import NavbarMobileUser from '../NavbarMobileUser/NavbarMobileUser';
 import FooterDeskop from '../FooterDeskop/FooterDeskop';
@@ -9,7 +8,6 @@ import FooterMobile from '../FooterMobile/FooterMobile';
 //import NavbarMobileAdmin from '../NavbarMobileAdmin/NavbarMobileAdmin';
 
 const Responsive = ({ children }) => {
-
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
@@ -21,18 +19,14 @@ const Responsive = ({ children }) => {
         width: window.innerWidth,
         height: window.innerHeight,
       });
-
-     
     };
-
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
     console.log('Event listener de resize ELIMINADO (limpieza).');
   }, []);
 
-
-  const isDesktop = windowSize.width >= 771
+  const isDesktop = windowSize.width >= 771;
   //const isAdmin = role === 'admin';
   const desktopHeaderHeight = 90;
   const desktopFooterHeight = 90;
@@ -44,35 +38,30 @@ const Responsive = ({ children }) => {
   const currentFooterHeight = isDesktop ? desktopFooterHeight : mobileFooterHeight;
   return (
     <>
-
       {isDesktop ? <NavbarDeskopUser /> : <NavbarMobileUser />}
 
-
-      <main style={{
-
-        paddingTop: `${currentHeaderHeight}px`,
-        paddingBottom: `${currentFooterHeight}px`,
-        minHeight: '100vh',
-        boxSizing: 'border-box',
-        display: 'flex',
-        flexDirection: 'column',
-      }}>
+      <main
+        style={{
+          paddingTop: `${currentHeaderHeight}px`,
+          paddingBottom: `${currentFooterHeight}px`,
+          minHeight: '100vh',
+          boxSizing: 'border-box',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
         {children}
       </main>
 
-
       {isDesktop ? <FooterDeskop /> : <FooterMobile />}
-
     </>
   );
 };
 
+export default Responsive;
 
-
-
-export default Responsive
-
-{/*let currentHeaderHeight;
+{
+  /*let currentHeaderHeight;
 let currentNavbarComponent; // Variable para almacenar el componente Navbar a renderizar
 
 
@@ -120,5 +109,5 @@ if (isDesktop) {
      
     </>
   );
-};*/}
-
+};*/
+}

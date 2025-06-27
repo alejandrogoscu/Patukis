@@ -1,5 +1,5 @@
-import LogoAmarillo from '../../assets/icons/Logo_1.svg'
-import '../FooterMobile/FooterMobile.scss';
+import LogoAmarillo from '../../../assets/icons/Logo_1.svg';
+import './FooterMobile.scss';
 
 const FooterMobile = () => {
   return (
@@ -10,7 +10,7 @@ const FooterMobile = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default FooterMobile
+export default FooterMobile;
