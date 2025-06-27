@@ -32,7 +32,7 @@ function NavbarDeskopUser() {
           </li>
 
           <li className="navbar-item">
- <NavLink to="/Products" className="navbar-link"> 
+ <NavLink to="/Products" end className="navbar-link"> 
             <img src={patoIcono} alt="Products" className="navbar-icon-img" />
             PRODUCTOS
           </NavLink>
@@ -42,14 +42,14 @@ function NavbarDeskopUser() {
  <li className="navbar-item">
  <NavLink to="/products/cart" className="navbar-link"> 
  <Badge
-          count={itemCount} // Usa la longitud del carrito aquí
+          count={itemCount} 
           showZero
           overflowCount={99}
           offset={[10, 0]}
         >
             <img src={carritoIcono} alt="Carrito" className="navbar-icon-img" />
-            CARRITO
-            </Badge>
+           </Badge>
+             CARRITO
           </NavLink>
           </li>
         

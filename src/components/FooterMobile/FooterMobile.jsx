@@ -8,7 +8,6 @@ const FooterMobile = () => {
         <div className="footer-section-mobile">
           <img src={LogoAmarillo} alt="Logo_1" className="footer-logo-mobile" />
         </div>
-        <p className="footer-rights-mobile">© 2025 La Duck Web. Todos los derechos reservados.</p>
       </div>
     </footer>
   )

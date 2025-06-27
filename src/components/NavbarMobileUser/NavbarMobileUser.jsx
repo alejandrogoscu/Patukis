@@ -1,16 +1,22 @@
-
+import React, { useContext } from 'react'; 
 import { NavLink } from 'react-router-dom';
+import { Badge } from 'antd';
+
 
 import homeIcono from '../../assets/icons/Home.svg'
 import personIcono from '../../assets/icons/Person.svg'
 import patoIcono from '../../assets/icons/patito.svg'
 import carritoIcono from '../../assets/icons/Carrito.svg'
 import '../NavbarMobileUser/NavbarMobileUser.scss';
+import { ProductContext } from '../../context/ProductContext/ProductState';
 
 
 let link = " ";
 
 function NavbarMobileUser() {
+ 
+    const { cart } = useContext(ProductContext);
+    const itemCount = cart ? cart.length : 0;
   return (
     <nav className="navbar-container2">
       <ul className="navbar-list2">
@@ -24,13 +30,20 @@ function NavbarMobileUser() {
         </li>
 
         <li className="navbar-item2">
-          <NavLink to="/Products" className="navbar-link2">
+          <NavLink to="/Products" end className="navbar-link2">
             <img src={patoIcono} alt="Productos" className="navbar-icon-img2" />
           </NavLink>
         </li>
         <li className="navbar-item2">
           <NavLink to="/products/cart" className="navbar-link2">
+           <Badge
+                    count={itemCount} // Usa la longitud del carrito aquí
+                    showZero
+                    overflowCount={99}
+                    offset={[10, 0]}
+                    >
             <img src={carritoIcono} alt="Carrito" className="navbar-icon-img2" />
+            </Badge>
           </NavLink>
         </li>
 

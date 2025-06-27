@@ -22,9 +22,7 @@ const Responsive = ({ children }) => {
         height: window.innerHeight,
       });
 
-      console.log('handleResize activado!');
-      console.log('Ancho de ventana detectado:', window.innerWidth);
-      console.log('Altura de ventana detectada:', window.innerHeight);
+     
     };
 
 
