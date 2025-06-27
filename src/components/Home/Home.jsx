@@ -1,16 +1,5 @@
-<<<<<<< HEAD
-
-const Home = () => {
-  return (
-        <div> HOME
-</div>
-  )
-};
-
-export default Home
-=======
 import { useNavigate } from "react-router-dom";
-import logo from "../../assets/Logo_1.svg";
+import logo from "../../assets/icons/Logo_1.svg";
 import patos from "../../assets/paticontructors.png";
 import "./home.css";
 
@@ -33,4 +22,3 @@ const Home = () => {
 };
 
 export default Home;
->>>>>>> products

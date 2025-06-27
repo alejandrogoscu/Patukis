@@ -20,7 +20,7 @@ function NavbarMobileAdmin() {
                     </NavLink>
                 </li>
                 <li className="navbar-item2">
-                    <NavLink to="/Productos" className="navbar-link2">
+                    <NavLink to="/Products" className="navbar-link2">
                         <img src={patoIcono} alt="Productos" className="navbar-icon-img2" />
                     </NavLink>
                 </li>

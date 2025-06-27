@@ -16,9 +16,10 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Responsive>
+        
           <UserProvider>
             <ProductProvider>
+              <Responsive>
               <Routes>
                 <Route path="/register" element={<RegisterForm />} />
                 <Route path="/confirmation" element={<RegisterConfirmation />} />
@@ -28,9 +29,10 @@ function App() {
                 <Route path="/products/:_id" element={<GetOneProduct />} />
                 <Route path="/products/cart" element={<Cart />} />
               </Routes>
+              </Responsive>
             </ProductProvider>
           </UserProvider>
-        </Responsive>
+        
       </BrowserRouter>
     </>
   );

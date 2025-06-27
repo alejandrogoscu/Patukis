@@ -1,10 +1,12 @@
-
+import React, { useContext } from 'react'; 
 import { NavLink } from 'react-router-dom';
+import { Badge } from 'antd';
 
 import patoIcono from '../../assets/icons/patito.svg'
 import carritoIcono from '../../assets/icons/Carrito.svg'
 import personIcono from '../../assets/icons/Person.svg'
 import homeIcono from '../../assets/icons/Home.svg'
+import { ProductContext } from '../../context/ProductContext/ProductState';
 
 import '../NavbarDeskopUser/NavbarDeskopUser.scss';
 
@@ -12,6 +14,10 @@ import '../NavbarDeskopUser/NavbarDeskopUser.scss';
 let link = " ";
 
 function NavbarDeskopUser() {
+  const { cart } = useContext(ProductContext);
+  const itemCount = cart ? cart.length : 0;
+  
+
   return (
     <nav className="navbar-container">
       <ul className="navbar-list">
@@ -26,22 +32,29 @@ function NavbarDeskopUser() {
           </li>
 
           <li className="navbar-item">
- <NavLink to="/Productos" className="navbar-link"> 
-            <img src={patoIcono} alt="Productos" className="navbar-icon-img" />
+ <NavLink to="/Products" className="navbar-link"> 
+            <img src={patoIcono} alt="Products" className="navbar-icon-img" />
             PRODUCTOS
           </NavLink>
           </li>
         
 
  <li className="navbar-item">
- <NavLink to="/Carrito" className="navbar-link"> 
+ <NavLink to="/products/cart" className="navbar-link"> 
+ <Badge
+          count={itemCount} // Usa la longitud del carrito aquí
+          showZero
+          overflowCount={99}
+          offset={[10, 0]}
+        >
             <img src={carritoIcono} alt="Carrito" className="navbar-icon-img" />
             CARRITO
+            </Badge>
           </NavLink>
           </li>
         
  <li className="navbar-item">
- <NavLink to="/Perfil" className="navbar-link"> 
+ <NavLink to="/register" className="navbar-link"> 
             <img src={personIcono} alt="Perfil" className="navbar-icon-img" />
             PERFIL
           </NavLink>
