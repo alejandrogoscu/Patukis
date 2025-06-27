@@ -31,7 +31,9 @@ export const UserProvider = ({ children }) => {
   const getUserProfile = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('https://patukisapi.onrender.com/users/me', { headers: { Authorization: token } });
+      const res = await axios.get('https://patukisapi.onrender.com/users/me', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       dispatch({ type: 'GET_USER', payload: res.data });
     } catch (error) {
       console.error('Error al obtener el usuario:', error);
