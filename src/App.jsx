@@ -11,16 +11,12 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <Responsive>
+        <Responsive>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/Carrito" element={<Carrito />} />
-            <Route path="/Productos" element={<Productos />} />
-            <Route path="/Perfil" element={<Perfil />} />
-            <Route path="/Ajustes" element={<Ajustes />} />
-       </Routes>
-       </Responsive>
-       </BrowserRouter>
+            
+          </Routes>
+        </Responsive>
+      </BrowserRouter>
 
     </>
   );
