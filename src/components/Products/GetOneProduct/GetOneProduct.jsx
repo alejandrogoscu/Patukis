@@ -1,13 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ProductContext } from "../../../context/ProductContext/ProductState";
 import "./getOneProduct.css";
 import { Link } from "react-router-dom";
+import BlobSVG from "../Blob/Blob";
 
 const GetOneProduct = () => {
   const { _id } = useParams();
 
-  const { getOneProduct, product, cart, addToCart } = useContext(ProductContext);
+  const { getOneProduct, product, addToCart } = useContext(ProductContext);
 
   const [liked, setLiked] = useState(false);
 
@@ -32,6 +33,7 @@ const GetOneProduct = () => {
       <button onClick={handleNavigation}>Volver a todos productos</button>
       <div className="img-patito-container">
         <img src={product.image} alt={product.name} className="img-patito" />
+        <BlobSVG className="blob" />
       </div>
       <div className="btns-container">
         <button onClick={toggleLike} className="like-button">
