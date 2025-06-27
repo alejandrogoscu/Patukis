@@ -1,0 +1,61 @@
+.main-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+}
+
+.img-patito-container {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+  align-items: center;
+  max-height: 400px;
+  margin: 0 auto;
+  overflow: hidden;
+  flex: 1;
+  margin: 10px;
+}
+
+.img-patito {
+  position: relative;
+  max-height: 300px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  z-index: 1;
+}
+
+.blob {
+  position: absolute;
+  width: 600px;
+  height: 350px;
+  z-index: 0;
+}
+
+.like-button {
+  background: var(--naranja);
+  display: flex;
+  border: none;
+  cursor: pointer;
+  font-size: 32px;
+  color: white;
+  padding: 0 1rem;
+  text-align: center;
+  align-items: center;
+}
+
+.material-symbols-outlined {
+  font-size: 32px;
+}
+
+.btns-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-content: center;
+}
+
+h1 {
+  font-size: 2em;
+}
