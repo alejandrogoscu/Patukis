@@ -1,11 +1,11 @@
-import { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../../../context/UserContext/UserState';
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../../context/UserContext/UserState";
 
 const LoginForm = () => {
   const initialValue = {
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   };
 
   const navigate = useNavigate();
@@ -33,14 +33,14 @@ const LoginForm = () => {
   useEffect(() => {
     if (success) {
       const timer = setTimeout(() => {
-        navigate('/home');
+        navigate("/");
       }, 1000);
       return () => clearTimeout(timer);
     }
   }, [success, navigate]);
 
   const goToRegister = () => {
-    navigate('/register');
+    navigate("/register");
   };
 
   return (
@@ -82,7 +82,7 @@ const LoginForm = () => {
 
       <div className="login_register_prompt">
         <p className="login_register_text">
-          ¿Eres nueva/o en Patukis?{' '}
+          ¿Eres nueva/o en Patukis?{" "}
           <button className="login_register_button" onClick={goToRegister}>
             Comenzar →
           </button>
