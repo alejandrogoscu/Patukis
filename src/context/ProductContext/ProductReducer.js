@@ -10,6 +10,16 @@ const products = (state, action) => {
         ...state,
         product: action.payload,
       };
+    case "UPDATE_PRODUCT":
+      return {
+        ...state,
+        products: state.products.map((p) => (p._id === action.payload._id ? action.payload : p)),
+      };
+    case "DELETE_PRODUCT":
+      return {
+        ...state,
+        product: action.payload,
+      };
     case "ADD_CART":
       return {
         ...state,

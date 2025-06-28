@@ -80,3 +80,27 @@ button {
   margin: 2rem;
   justify-content: center;
 }
+
+.products-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row {
+  display: flex;
+  height: 50px;
+  border: #4fc3f7 solid;
+  border-radius: 1rem;
+  gap: 10px;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.row-prod-img-cont {
+  height: 100%;
+}
+
+.row-img-patitos {
+  height: 100%;
+}

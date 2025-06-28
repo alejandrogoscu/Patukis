@@ -1,31 +1,25 @@
-import { useContext, useEffect /* useState */ } from "react";
+import { useContext, useEffect } from "react";
 import { ProductContext } from "../../../context/ProductContext/ProductState";
 import "./getProducts.css";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../../context/UserContext/UserState";
+import AdminProducts from "../AdminProducts/AdminProducts";
 
 const GetProducts = () => {
-  const { products, getProducts, addToCart, cart } = useContext(ProductContext);
+  const { products, getProducts, addToCart } = useContext(ProductContext);
+  const { user } = useContext(UserContext);
 
-  /*  const [filters, setFilters] = useState({
-    categories: "all",
-    minPrice: 0,
-  });
-
-  // Filtrar productos
-  const filterProducts = (products) => {
-    return products.filter((product) => {
-      const priceOk = product.price >= filters.minPrice;
-      const categoryOk =
-        filters.categories === "all" ||
-        (Array.isArray(product.categories) && product.categories.includes(filters.categories));
-      return priceOk && categoryOk;
-    });
-  };
-
-  const filteredProducts = filterProducts(products); */
   useEffect(() => {
     getProducts();
   }, []);
+
+  if (user.role === "mamapato") {
+    return (
+      <>
+        <AdminProducts />
+      </>
+    );
+  }
 
   return (
     <>
