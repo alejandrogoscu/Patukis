@@ -43,7 +43,7 @@
 }
 
 .login__label {
-  width: 60%;
+  width: 80%;
   font-weight: 500;
   font-size: 1.3rem;
   line-height: 1.1;
@@ -61,11 +61,23 @@
   font-weight: 600;
   background-color: var(--naranja);
   border: 3px solid var(--naranja);
+  anchor-name: --my-anchor;
 
   &:hover {
     background-color: var(--blanco);
     color: var(--naranja);
   }
+}
+
+.login__error {
+  width: 300px;
+  text-align: center;
+  position: absolute;
+  position-anchor: --my-anchor;
+  position-area: start center;
+  margin-bottom: 6px;
+  font-size: 1rem;
+  color: white;
 }
 
 .login__reg--container {

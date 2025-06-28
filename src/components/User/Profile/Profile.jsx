@@ -22,7 +22,6 @@ export const Profile = () => {
   }, [isAuthenticated]);
 
   if (!user) return <p className="profile__msgerror">No se encontraron datos del usuario.</p>;
-
   return (
     <div className="profile__container">
       <h2 className="profile__title">Perfil de Usuario</h2>
@@ -46,22 +45,23 @@ export const Profile = () => {
         </section>
         <section className="profile__whistlist">
           <h3 className="profile__whistlist--title">Lista de Deseos</h3>
-          {user.wishlist && user.wishlist.length > 0 ? (
+          {Array.isArray(user?.wishlist) && user.wishlist.length > 0 && user.wishlist[0]?.name ? (
             <ul className="profile__whistlist--list">
               {user.wishlist.map((item) => (
                 <li className="profile__whistlist--item" key={item._id}>
                   <img className="profile__whistlist--image" src={item.image} />
-                  {item.name} - €{item.price.toFixed(2)}
+                  {item.name} - €{Number(item.price).toFixed(2)}
                 </li>
               ))}
             </ul>
           ) : (
-            <p className="profile__whistlist--msg">La lista de deseos esta vacia</p>
+            <p className="profile__whistlist--msg">La lista de deseos está vacía</p>
           )}
         </section>
         <section className="profile__orders">
           <h3 className="profile__orders--title">Pedidos Realizados</h3>
-          {user.orders && user.orders.length > 0 ? (
+
+          {Array.isArray(user?.orders) && user.orders.length > 0 && user.orders[0]?.products?.[0]?.name ? (
             <ul className="profile__orders--list">
               {user.orders.map((item) => (
                 <li className="profile__orders--item" key={item._id}>
@@ -69,8 +69,9 @@ export const Profile = () => {
                   <ul className="profile__orders--prodlist">
                     {item.products.map((producto) => (
                       <li className="profile__orders--proditem" key={producto._id}>
-                        <img className="profile__orders--prodimg" src={producto.image} /> <span>{producto.name}</span>{' '}
-                        <span>€{producto.price.toFixed(2)}</span>
+                        <img className="profile__orders--prodimg" src={producto.image} />
+                        <span>{producto.name}</span>
+                        <span>€{Number(producto.price).toFixed(2)}</span>
                       </li>
                     ))}
                   </ul>
