@@ -1,43 +1,23 @@
-import axios from "axios";
-import OrderReducer from "./OrderReducer.js";
-import { createContext, useReducer } from "react";
+import { createContext, useContext } from 'react';
+import { UserContext } from '../UserContext/UserState';
+import axios from 'axios';
 
-const API_URL = "https://patukisapi.onrender.com/orders";
-
-const token = localStorage.getItem("token") || "";
-const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-const initialState = {
-  orders: [],
-  order: null,
-};
-
-export const OrderContext = createContext(initialState);
+export const OrderContext = createContext();
 
 export const OrderProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(OrderReducer, initialState);
-
-  const getOrders = async () => {
+  const { user } = useContext(UserContext);
+  const createOrder = async (cart) => {
+    const token = localStorage.getItem('token');
     try {
-      const res = await axios.get(API_URL);
-      dispatch({
-        type: "GET_ORDERS",
-        payload: res.data,
-      });
+      await axios.post(
+        'https://patukisapi.onrender.com/orders',
+        { id_user: user._id, id_products: cart },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
     } catch (error) {
-      console.error("Error al mostrar los pedidos realizados:", error);
+      console.error(error);
     }
   };
 
-  return (
-    <OrderProvider.Provider
-      value={{
-        orders: state.orders,
-        order: state.order,
-        getOrders,
-      }}
-    >
-      {children}
-    </OrderProvider.Provider>
-  );
+  return <OrderContext.Provider value={{ createOrder }}>{children}</OrderContext.Provider>;
 };
