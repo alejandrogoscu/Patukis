@@ -9,7 +9,7 @@ import { Profile } from './components/User/Profile/Profile';
 import Responsive from './components/NavbarFooter/Responsive/Responsive';
 import GetProducts from './components/Products/GetProducts/GetProducts';
 import GetOneProduct from './components/Products/GetOneProduct/GetOneProduct';
-import Home from './components/Home/Home';
+import { Home } from './components/Home/Home';
 import Cart from './components/Products/Cart/Cart';
 import './App.css';
 
