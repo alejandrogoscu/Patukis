@@ -1,0 +1,82 @@
+img {
+  max-width: 500px;
+}
+.products-crds {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 4rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  max-width: 400px;
+  background-color: #4fc3f7;
+  border-radius: 10px;
+  box-shadow: 0px 10px 12px rgba(224, 203, 14, 0.08), -4px -4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.3s;
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.1), -4px -4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card-prod-img-cont {
+  width: 100%;
+  height: 75%;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  background-image: url("../../../assets/circle-scatter-haikei.svg");
+  background-size: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-patitos {
+  width: 100%;
+  height: auto;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: #1f1f1f;
+  cursor: default;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+
+.card-des {
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  margin: 0;
+  font-size: 13px;
+  color: #1f1f1f;
+  cursor: default;
+}
+
+button {
+  border-radius: 30px;
+  background-color: #ff9800;
+}
+
+.filters-container {
+  display: flex;
+  margin: 2rem;
+  justify-content: center;
+}

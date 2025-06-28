@@ -6,10 +6,10 @@
   align-items: center;
 }
 
-.register__title {
+/* .register__title {
   font-size: 2.5rem;
   color: var(--naranja);
-}
+} */
 
 .register__form {
   width: 80%;
