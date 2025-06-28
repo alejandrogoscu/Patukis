@@ -6,11 +6,12 @@
   font-family: inherit;
   font-size: 1.1rem;
   font-weight: 600;
-  background-color: var(--naranja);
-  border: 3px solid var(--naranja);
+  color: var(--naranja);
+  background-color: var(--blanco);
+  border: 3px solid var(--blanco);
 
   &:hover {
-    background-color: var(--blanco);
-    color: var(--naranja);
+    background-color: var(--naranja);
+    color: var(--blanco);
   }
 }
