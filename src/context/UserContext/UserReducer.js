@@ -1,6 +1,6 @@
 const UserReducer = (state, action) => {
   switch (action.type) {
-    case 'LOGIN':
+    case "LOGIN":
       return {
         ...state,
         user: action.payload.user,
@@ -8,7 +8,7 @@ const UserReducer = (state, action) => {
         isAuthenticated: true,
       };
 
-    case 'LOGOUT':
+    case "LOGOUT":
       return {
         ...state,
         user: null,
@@ -16,20 +16,32 @@ const UserReducer = (state, action) => {
         isAuthenticated: false,
       };
 
-    case 'REGISTER':
+    case "REGISTER":
       return {
         ...state,
         user: action.payload.user,
         token: action.payload.token,
         isAuthenticated: true,
       };
-    case 'GET_USER':
+    case "GET_USER":
       return {
         ...state,
         user: action.payload,
       };
     default:
       return state;
+
+    case "ADD_TO_WISHLIST":
+      return {
+        ...state,
+        wishlist: [...state.wishlist, action.payload],
+      };
+
+    case "REMOVE_FROM_WISHLIST":
+      return {
+        ...state,
+        wishlist: state.wishlist.filter((product) => product._id !== action.payload),
+      };
   }
 };
 

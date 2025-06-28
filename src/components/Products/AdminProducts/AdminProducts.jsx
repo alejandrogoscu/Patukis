@@ -21,12 +21,24 @@ const AdminProducts = () => {
     const { name, value } = e.target;
     setUpdatedData({
       ...updatedData,
-      [name]: name === "price" ? parseFloat(value) : value,
+      [name]: value,
     });
   };
 
   const handleSave = async () => {
-    await updateProduct(editId, updatedData);
+    const priceNumber = parseFloat(updatedData.price);
+
+    if (isNaN(priceNumber)) {
+      alert("Por favor, introduce un precio válido.");
+      return;
+    }
+
+    const dataToSave = {
+      ...updatedData,
+      price: priceNumber,
+    };
+
+    await updateProduct(editId, dataToSave);
     await getProducts();
     setEditId(null);
     setUpdatedData({});
@@ -72,7 +84,7 @@ const AdminProducts = () => {
               </td>
               <td>
                 {editId === product._id ? (
-                  <input name="price" value={updatedData.price} onChange={handleChange} />
+                  <input name="price" value={updatedData.price ?? ""} onChange={handleChange} />
                 ) : (
                   product.price.toFixed(2)
                 )}
