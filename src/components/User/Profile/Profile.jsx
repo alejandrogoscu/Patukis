@@ -39,7 +39,7 @@ export const Profile = () => {
 
             <p className="profile__email">{user.email}</p>
 
-            <p className="profile__address">{user.adress}</p>
+            {/* <p className="profile__address">{user.adress}</p> */}
 
             <LogoutButton />
           </div>

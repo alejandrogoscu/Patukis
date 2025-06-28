@@ -1,11 +1,12 @@
-import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../../context/UserContext/UserState";
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../../context/UserContext/UserState';
+import './loginForm.css';
 
 const LoginForm = () => {
   const initialValue = {
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   };
 
   const navigate = useNavigate();
@@ -33,24 +34,24 @@ const LoginForm = () => {
   useEffect(() => {
     if (success) {
       const timer = setTimeout(() => {
-        navigate("/");
+        navigate('/');
       }, 1000);
       return () => clearTimeout(timer);
     }
   }, [success, navigate]);
 
   const goToRegister = () => {
-    navigate("/register");
+    navigate('/register');
   };
 
   return (
-    <div className="login_container">
-      <h2 className="login_title">Iniciar Sesión</h2>
-      <form className="login_form" onSubmit={handleSubmit}>
-        <label className="login_label" htmlFor="email">
+    <div className="login__container">
+      <h2 className="login__title">Iniciar Sesión</h2>
+      <form className="login__form" onSubmit={handleSubmit}>
+        <label className="login__label" htmlFor="email">
           Correo Electrónico
           <input
-            className="login_input"
+            className="login__input"
             type="email"
             name="email"
             id="email"
@@ -61,10 +62,10 @@ const LoginForm = () => {
           />
         </label>
 
-        <label className="login_label" htmlFor="password">
+        <label className="login__label" htmlFor="password">
           Contraseña
           <input
-            className="login_input"
+            className="login__input"
             type="password"
             name="password"
             id="password"
@@ -75,18 +76,16 @@ const LoginForm = () => {
           />
         </label>
 
-        <button className="login_button" type="submit">
+        <button className="login__btn" type="submit">
           Iniciar Sesión
         </button>
       </form>
 
-      <div className="login_register_prompt">
-        <p className="login_register_text">
-          ¿Eres nueva/o en Patukis?{" "}
-          <button className="login_register_button" onClick={goToRegister}>
-            Comenzar →
-          </button>
-        </p>
+      <div className="login__reg--container">
+        <p className="login__reg--text">¿Eres nueva/o en Patukis? </p>
+        <button className="login__reg--btn" onClick={goToRegister}>
+          Comenzar
+        </button>
       </div>
     </div>
   );
