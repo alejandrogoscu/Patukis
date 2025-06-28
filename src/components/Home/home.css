@@ -42,12 +42,25 @@
 
 .home__logo {
   width: 70%;
+  max-width: 700px;
 }
 
 .home__tile {
   color: var(--blanco);
   margin-top: 0;
   font-size: 1.8rem;
+}
+
+.home__infocontainer {
+  width: 900px;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home__info--img {
+  width: 600px;
 }
 
 @media (width < 720px) {
@@ -70,5 +83,9 @@
   .home__video3 {
     align-self: end;
     margin-top: -40px;
+  }
+
+  .home__info--img {
+    width: 340px;
   }
 }

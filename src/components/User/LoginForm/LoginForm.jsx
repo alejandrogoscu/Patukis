@@ -12,6 +12,7 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const [FormData, setFormData] = useState(initialValue);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
   const { login } = useContext(UserContext);
 
   const clearState = () => {
@@ -24,10 +25,13 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
     const wasSuccesful = await login(FormData);
     if (wasSuccesful) {
       setSuccess(true);
       clearState();
+    } else {
+      setError('Correo o contraseña incorrectos');
     }
   };
 
@@ -76,6 +80,7 @@ const LoginForm = () => {
           />
         </label>
 
+        {error && <span className="login__error">{error}</span>}
         <button className="login__btn" type="submit">
           Iniciar Sesión
         </button>

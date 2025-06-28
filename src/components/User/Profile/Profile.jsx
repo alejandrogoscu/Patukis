@@ -10,7 +10,7 @@ export const Profile = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!isAuthenticated || !token) {
       navigate("/login");
     }
   }, [isAuthenticated, navigate]);
@@ -22,7 +22,6 @@ export const Profile = () => {
   }, [isAuthenticated]);
 
   if (!user) return <p className="profile__msgerror">No se encontraron datos del usuario.</p>;
-
   return (
     <div className="profile__container">
       <h2 className="profile__title">Perfil de Usuario</h2>
@@ -61,6 +60,7 @@ export const Profile = () => {
         </section>
         <section className="profile__orders">
           <h3 className="profile__orders--title">Pedidos Realizados</h3>
+
           {Array.isArray(user?.orders) &&
           user.orders.length > 0 &&
           user.orders[0]?.products?.[0]?.name ? (
