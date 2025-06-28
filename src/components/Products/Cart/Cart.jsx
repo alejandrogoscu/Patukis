@@ -1,12 +1,13 @@
-import { useContext } from "react";
-import { ProductContext } from "../../../context/ProductContext/ProductState";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import "./cart.css";
+import { useContext } from 'react';
+import { ProductContext } from '../../../context/ProductContext/ProductState';
+import { OrderContext } from '../../../context/OrderContext/OrderState';
+import { Link } from 'react-router-dom';
+
+import './cart.css';
 
 const Cart = () => {
   const { cart, clearCart, removeFromCart } = useContext(ProductContext);
-  const API_URL = "https://patukisapi.onrender.com/orders";
+  const { createOrder } = useContext(OrderContext);
 
   if (!cart || cart.length === 0) {
     return (
@@ -20,16 +21,9 @@ const Cart = () => {
   }
 
   const createNewOrder = async () => {
-    // Extraemos los _id de los productos del carrito
     const productIds = cart.map((item) => item._id);
-
-    try {
-      await axios.post(`${API_URL}`, { productIds });
-      alert("¡Pedido creado con éxito!");
-      clearCart();
-    } catch (error) {
-      console.error("Error al crear el pedido:", error);
-    }
+    await createOrder(productIds);
+    clearCart();
   };
   const total = cart.reduce((acc, item) => acc + item.price, 0);
 

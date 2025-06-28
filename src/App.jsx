@@ -11,6 +11,7 @@ import GetProducts from './components/Products/GetProducts/GetProducts';
 import GetOneProduct from './components/Products/GetOneProduct/GetOneProduct';
 import { Home } from './components/Home/Home';
 import Cart from './components/Products/Cart/Cart';
+import { OrderProvider } from './context/OrderContext/OrderState';
 import './App.css';
 
 function App() {
@@ -19,19 +20,21 @@ function App() {
       <BrowserRouter>
         <UserProvider>
           <ProductProvider>
-            <Responsive>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/products" element={<GetProducts />} />
-                <Route path="/products/:_id" element={<GetOneProduct />} />
-                <Route path="/products/cart" element={<Cart />} />
-                <Route path="/register" element={<RegisterForm />} />
-                <Route path="/confirmation" element={<RegisterConfirmation />} />
-                <Route path="/login" element={<LoginForm />} />
-                <Route path="/logout" element={<LogoutButton />} />
-                <Route path="/profile" element={<Profile />} />
-              </Routes>
-            </Responsive>
+            <OrderProvider>
+              <Responsive>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/products" element={<GetProducts />} />
+                  <Route path="/products/:_id" element={<GetOneProduct />} />
+                  <Route path="/products/cart" element={<Cart />} />
+                  <Route path="/register" element={<RegisterForm />} />
+                  <Route path="/confirmation" element={<RegisterConfirmation />} />
+                  <Route path="/login" element={<LoginForm />} />
+                  <Route path="/logout" element={<LogoutButton />} />
+                  <Route path="/profile" element={<Profile />} />
+                </Routes>
+              </Responsive>
+            </OrderProvider>
           </ProductProvider>
         </UserProvider>
       </BrowserRouter>
