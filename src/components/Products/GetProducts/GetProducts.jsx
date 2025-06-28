@@ -13,7 +13,7 @@ const GetProducts = () => {
     getProducts();
   }, []);
 
-  if (user.role === "mamapato") {
+  if (user?.role === "mamapato") {
     return (
       <>
         <AdminProducts />
