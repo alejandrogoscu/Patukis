@@ -6,6 +6,7 @@ import { RegisterConfirmation } from './components/User/RegisterConfirmation/Reg
 import LoginForm from './components/User/LoginForm/LoginForm';
 import LogoutButton from './components/User/LogoutButton/LogoutButton';
 import { Profile } from './components/User/Profile/Profile';
+import Responsive from './components/NavbarFooter/Responsive/Responsive';
 import GetProducts from './components/Products/GetProducts/GetProducts';
 import GetOneProduct from './components/Products/GetOneProduct/GetOneProduct';
 import Home from './components/Home/Home';
@@ -18,17 +19,19 @@ function App() {
       <BrowserRouter>
         <UserProvider>
           <ProductProvider>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/products" element={<GetProducts />} />
-              <Route path="/products/:_id" element={<GetOneProduct />} />
-              <Route path="/products/cart" element={<Cart />} />
-              <Route path="/register" element={<RegisterForm />} />
-              <Route path="/confirmation" element={<RegisterConfirmation />} />
-              <Route path="/login" element={<LoginForm />} />
-              <Route path="/logout" element={<LogoutButton />} />
-              <Route path="/profile" element={<Profile />} />
-            </Routes>
+            <Responsive>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/products" element={<GetProducts />} />
+                <Route path="/products/:_id" element={<GetOneProduct />} />
+                <Route path="/products/cart" element={<Cart />} />
+                <Route path="/register" element={<RegisterForm />} />
+                <Route path="/confirmation" element={<RegisterConfirmation />} />
+                <Route path="/login" element={<LoginForm />} />
+                <Route path="/logout" element={<LogoutButton />} />
+                <Route path="/profile" element={<Profile />} />
+              </Routes>
+            </Responsive>
           </ProductProvider>
         </UserProvider>
       </BrowserRouter>
