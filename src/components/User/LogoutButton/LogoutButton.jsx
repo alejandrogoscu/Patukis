@@ -1,11 +1,12 @@
 import { useContext } from 'react';
 import { UserContext } from '../../../context/UserContext/UserState';
+import './logoutButton.css';
 
 const LogoutButton = () => {
   const { logout } = useContext(UserContext);
 
   return (
-    <button onClick={logout} style={{ backgroundColor: 'red', color: 'white' }}>
+    <button className="logout__btn" onClick={logout}>
       Cerrar sesión
     </button>
   );

@@ -1,24 +1,22 @@
-import { useNavigate } from "react-router-dom";
-import logo from "../../assets/Logo_1.svg";
-import patos from "../../assets/paticontructors.png";
-import "./home.css";
+import vid01 from '../../assets/videos/paintervid01.gif';
+import vid02 from '../../assets/videos/paintervid02.gif';
+import vid03 from '../../assets/videos/paintervid03.gif';
+import logo from '../../assets/icons/Logo_1.svg';
+import './home.css';
 
-const Home = () => {
-  const navigate = useNavigate();
-
-  const handleNavigation = () => {
-    navigate("/products");
-  };
-
+export const Home = () => {
   return (
-    <div className="contenedor">
-      <img src={logo} />
-      <img src={patos} width="640px" />
-      <button onClick={handleNavigation} className="home-btn">
-        Ver Productos!
-      </button>
+    <div className="home__container">
+      <div className="home__videocontainer">
+        <img className="home__video1" src={vid01} />
+        <img className="home__video2" src={vid02} />
+        <img className="home__video3" src={vid03} />
+      </div>
+
+      <div className="home__logocontainer">
+        <img className="home__logo" src={logo} />
+        <h2 className="home__tile">patitos con personalidad</h2>
+      </div>
     </div>
   );
 };
-
-export default Home;

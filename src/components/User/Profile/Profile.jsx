@@ -2,13 +2,24 @@ import { useContext, useEffect } from 'react';
 import { UserContext } from '../../../context/UserContext/UserState';
 import './profile.css';
 import avatar from '../../../assets/patito-avatar.svg';
+import LogoutButton from '../LogoutButton/LogoutButton';
+import { useNavigate } from 'react-router-dom';
 
 export const Profile = () => {
-  const { user, getUserProfile } = useContext(UserContext);
+  const { user, token, isAuthenticated, getUserProfile } = useContext(UserContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    getUserProfile();
-  }, []);
+    if (!isAuthenticated) {
+      navigate('/login');
+    }
+  }, [isAuthenticated, navigate]);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      getUserProfile();
+    }
+  }, [isAuthenticated]);
 
   if (!user) return <p className="profile__msgerror">No se encontraron datos del usuario.</p>;
 
@@ -28,7 +39,9 @@ export const Profile = () => {
 
             <p className="profile__email">{user.email}</p>
 
-            <p className="profile__address">{user.adress}</p>
+            {/* <p className="profile__address">{user.adress}</p> */}
+
+            <LogoutButton />
           </div>
         </section>
         <section className="profile__whistlist">
