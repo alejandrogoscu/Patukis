@@ -43,7 +43,7 @@ function NavbarMobileUser() {
         </li>
 
         <li className="navbar-item2">
-          <NavLink to="/login" className="navbar-link2">
+          <NavLink to="/profile" className="navbar-link2">
             <img src={personIcono} alt="Perfil" className="navbar-icon-img2" />
           </NavLink>
         </li>

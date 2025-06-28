@@ -59,7 +59,14 @@ export const UserProvider = ({ children }) => {
   // 3) LOGOUT: POST /users/logout + limpieza frontend
   const logout = async () => {
     try {
-      await axios.post('https://patukisapi.onrender.com/users/logout');
+      const token = localStorage.getItem('token');
+      await axios.post(
+        'https://patukisapi.onrender.com/users/logout',
+        {},
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
     } catch (err) {
       console.warn('Error en logout (ignorado):', err);
     } finally {

@@ -43,7 +43,7 @@ function NavbarDeskopUser() {
         </Badge>
 
         <li className="navbar-item">
-          <NavLink to="/login" className="navbar-link">
+          <NavLink to="/profile" className="navbar-link">
             <img src={personIcono} alt="Perfil" className="navbar-icon-img" />
             PERFIL
           </NavLink>
