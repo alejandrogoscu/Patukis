@@ -8,9 +8,9 @@ export const Home = () => {
   return (
     <div className="home__container">
       <div className="home__videocontainer">
-        <img className="home__video" src={vid01} />
-        <img className="home__video" src={vid02} />
-        <img className="home__video" src={vid03} />
+        <img className="home__video1" src={vid01} />
+        <img className="home__video2" src={vid02} />
+        <img className="home__video3" src={vid03} />
       </div>
 
       <div className="home__logocontainer">
