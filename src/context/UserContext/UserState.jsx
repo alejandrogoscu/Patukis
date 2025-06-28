@@ -2,6 +2,8 @@ import { createContext, useReducer } from "react";
 import UserReducer from "./UserReducer";
 import axios from "axios";
 
+const API_URL = "https://patukisapi.onrender.com/users";
+
 // Valores iniciales desde localStorage
 const token = localStorage.getItem("token") || "";
 const user = JSON.parse(localStorage.getItem("user")) || null;
@@ -10,6 +12,7 @@ const initialState = {
   token,
   user,
   isAuthenticated: !!token,
+  wishlist: [],
 };
 
 export const UserContext = createContext(initialState);
@@ -19,7 +22,7 @@ export const UserProvider = ({ children }) => {
 
   const register = async (userData) => {
     try {
-      const res = await axios.post("https://patukisapi.onrender.com/users", userData);
+      const res = await axios.post(API_URL, userData);
       dispatch({ type: "REGISTER", payload: res.data });
       return true;
     } catch (error) {
@@ -31,7 +34,7 @@ export const UserProvider = ({ children }) => {
   const getUserProfile = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("https://patukisapi.onrender.com/users/me", {
+      const res = await axios.get(`${API_URL}/me`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       dispatch({ type: "GET_USER", payload: res.data });
@@ -42,7 +45,7 @@ export const UserProvider = ({ children }) => {
 
   const login = async (userData) => {
     try {
-      const res = await axios.post("https://patukisapi.onrender.com/users/login", userData);
+      const res = await axios.post(`${API_URL}/login`, userData);
       const { token, user } = res.data;
 
       localStorage.setItem("token", token);
@@ -61,7 +64,7 @@ export const UserProvider = ({ children }) => {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "https://patukisapi.onrender.com/users/logout",
+        `${API_URL}/logout`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -77,16 +80,58 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const addToWishList = async (productId) => {
+    try {
+      const res = await axios.put(`${API_URL}/wishlist/${productId}`, null, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      dispatch({
+        type: "ADD_TO_WISHLIST",
+        payload: res.data,
+      });
+    } catch (error) {
+      console.error("Error al añadir a wishlist:", error.response?.data || error.message);
+    }
+  };
+
+  const removeFromWishList = async (productId) => {
+    try {
+      if (!productId || typeof productId !== "string") {
+        console.warn("ID del producto inválido:", productId);
+        return;
+      }
+
+      await axios.delete(`${API_URL}/wishlist/${productId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      dispatch({
+        type: "REMOVE_FROM_WISHLIST",
+        payload: productId,
+      });
+    } catch (error) {
+      console.error("Error al eliminar de wishlist:", error.response?.data || error.message);
+    }
+  };
+
   return (
     <UserContext.Provider
       value={{
         user: state.user,
         token: state.token,
         isAuthenticated: state.isAuthenticated,
+        wishlist: state.wishlist,
         register,
         login,
         logout,
         getUserProfile,
+        addToWishList,
+        removeFromWishList,
       }}
     >
       {children}

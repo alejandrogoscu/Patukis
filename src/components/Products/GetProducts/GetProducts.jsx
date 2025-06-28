@@ -24,15 +24,14 @@ const GetProducts = () => {
   return (
     <>
       <h1>Productos</h1>
-      <Link to="/products/cart">
-        <button>Ir al Carrito</button>
-      </Link>
       <div className="filters-container"></div>
       <main className="products-crds">
         {products.map((product) => (
           <div className="card" key={product._id}>
             <div className="card-prod-img-cont">
-              <img src={product.image} alt={product.name} className="img-patitos" />
+              {product.image ? (
+                <img src={product.image} alt={product.name} className="img-patitos" />
+              ) : null}
             </div>
             <div className="prod-info">
               <p className="card-title">{product.name}</p>

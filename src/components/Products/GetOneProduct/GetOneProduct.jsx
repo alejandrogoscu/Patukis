@@ -1,36 +1,37 @@
 import { useContext, useEffect, useMemo, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { ProductContext } from "../../../context/ProductContext/ProductState";
+import { UserContext } from "../../../context/UserContext/UserState";
 import "./getOneProduct.css";
-import { Link } from "react-router-dom";
 import BlobSVG from "../Blob/Blob";
 
 const GetOneProduct = () => {
   const { _id } = useParams();
 
   const { getOneProduct, product, addToCart } = useContext(ProductContext);
-
-  const [liked, setLiked] = useState(false);
+  const { addToWishList, removeFromWishList, wishlist } = useContext(UserContext);
 
   useEffect(() => {
     getOneProduct(_id);
   }, [_id]);
 
-  const navigate = useNavigate();
+  const isLiked = useMemo(() => {
+    if (!product) return false;
+    return wishlist.some((item) => item._id === product._id);
+  }, [wishlist, product]);
 
-  const handleNavigation = () => {
-    navigate("/products");
-  };
-
-  const toggleLike = () => {
-    setLiked((prev) => !prev);
+  const toggleLike = async () => {
+    if (!isLiked) {
+      await addToWishList(product._id);
+    } else {
+      await removeFromWishList(product._id);
+    }
   };
 
   if (!product) return <p>Cargando producto...</p>;
 
   return (
     <div className="main-container">
-      <button onClick={handleNavigation}>Volver a todos productos</button>
       <div className="img-patito-container">
         <img src={product.image} alt={product.name} className="img-patito" />
         <BlobSVG className="blob" />
@@ -39,7 +40,7 @@ const GetOneProduct = () => {
         <button onClick={toggleLike} className="like-button">
           <span
             className="material-symbols-outlined"
-            style={{ fontVariationSettings: `"FILL" ${liked ? 1 : 0}` }}
+            style={{ fontVariationSettings: `"FILL" ${isLiked ? 1 : 0}` }}
           >
             favorite
           </span>
@@ -53,11 +54,7 @@ const GetOneProduct = () => {
       </div>
       <div>
         <h3>Reseñas</h3>
-        <div className="review-container">
-          <Link to={`/products/cart`}>
-            <button>Ir al carrito</button>
-          </Link>
-        </div>
+        <div className="review-container"></div>
       </div>
     </div>
   );

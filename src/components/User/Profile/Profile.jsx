@@ -1,9 +1,9 @@
-import { useContext, useEffect } from 'react';
-import { UserContext } from '../../../context/UserContext/UserState';
-import './profile.css';
-import avatar from '../../../assets/patito-avatar.svg';
-import LogoutButton from '../LogoutButton/LogoutButton';
-import { useNavigate } from 'react-router-dom';
+import { useContext, useEffect } from "react";
+import { UserContext } from "../../../context/UserContext/UserState";
+import "./profile.css";
+import avatar from "../../../assets/patito-avatar.svg";
+import LogoutButton from "../LogoutButton/LogoutButton";
+import { useNavigate } from "react-router-dom";
 
 export const Profile = () => {
   const { user, token, isAuthenticated, getUserProfile } = useContext(UserContext);
@@ -11,7 +11,7 @@ export const Profile = () => {
 
   useEffect(() => {
     if (!isAuthenticated || !token) {
-      navigate('/login');
+      navigate("/login");
     }
   }, [isAuthenticated, navigate]);
 
@@ -61,7 +61,9 @@ export const Profile = () => {
         <section className="profile__orders">
           <h3 className="profile__orders--title">Pedidos Realizados</h3>
 
-          {Array.isArray(user?.orders) && user.orders.length > 0 && user.orders[0]?.products?.[0]?.name ? (
+          {Array.isArray(user?.orders) &&
+          user.orders.length > 0 &&
+          user.orders[0]?.products?.[0]?.name ? (
             <ul className="profile__orders--list">
               {user.orders.map((item) => (
                 <li className="profile__orders--item" key={item._id}>

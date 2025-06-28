@@ -5,6 +5,7 @@ import { createContext, useEffect, useReducer } from "react";
 const API_URL = "https://patukisapi.onrender.com/products";
 
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
+const token = localStorage.getItem("token") || "";
 
 const initialState = {
   products: [],
@@ -19,7 +20,7 @@ export const ProductProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(state.cart));
-   }, [state.cart]);
+  }, [state.cart]);
 
   const getProducts = async () => {
     try {
@@ -48,7 +49,11 @@ export const ProductProvider = ({ children }) => {
 
   const updateProduct = async (_id, updatedData) => {
     try {
-      const res = await axios.put(`${API_URL}/${_id}`, updatedData);
+      const res = await axios.put(`${API_URL}/${_id}`, updatedData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       dispatch({
         type: "UPDATE_PRODUCT",
         payload: res.data,
@@ -60,7 +65,11 @@ export const ProductProvider = ({ children }) => {
 
   const deleteProduct = async (_id) => {
     try {
-      await axios.delete(`${API_URL}/${_id}`);
+      await axios.delete(`${API_URL}/${_id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       dispatch({
         type: "DELETE_PRODUCT",
         payload: _id,
