@@ -47,19 +47,53 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
-  const updateProduct = async (_id, updatedData) => {
+  const createProduct = async (product, isFormData = false) => {
     try {
-      const res = await axios.put(`${API_URL}/${_id}`, updatedData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const headers = isFormData
+        ? { Authorization: `Bearer ${token}` }
+        : { "Content-Type": "application/json", Authorization: `Bearer ${token}` };
+
+      const config = {
+        method: "POST",
+        headers,
+        body: isFormData ? product : JSON.stringify(product),
+      };
+
+      const res = await fetch(API_URL, config);
+      if (!res.ok) throw new Error("Error al crear el producto");
+      const data = await res.json();
+
       dispatch({
-        type: "UPDATE_PRODUCT",
-        payload: res.data,
+        type: "CREATE_PRODUCT",
+        payload: data.product,
       });
     } catch (error) {
-      console.error("Error al actualizar el producto:", error);
+      console.error("Error al crear el producto:", error);
+    }
+  };
+
+  const updateProduct = async (id, data, isFormData = false, token) => {
+    try {
+      const headers = isFormData
+        ? { Authorization: `Bearer ${token}` }
+        : {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          };
+
+      const config = {
+        method: "PUT",
+        headers,
+        body: isFormData ? data : JSON.stringify(data),
+      };
+
+      const res = await fetch(`${API_URL}/${id}`, config);
+      if (!res.ok) throw new Error("Error al actualizar el producto");
+      const result = await res.json();
+      return result;
+    } catch (error) {
+      console.error("Fallo en updateProduct: ", error);
+      throw error;
     }
   };
 
@@ -110,6 +144,7 @@ export const ProductProvider = ({ children }) => {
         removeFromCart,
         updateProduct,
         deleteProduct,
+        createProduct,
       }}
     >
       {children}

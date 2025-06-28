@@ -1,12 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../../context/ProductContext/ProductState";
 import "./adminproducts.css";
+import { Link } from "react-router-dom";
 
 const AdminProducts = () => {
   const { products, getProducts, updateProduct, deleteProduct } = useContext(ProductContext);
 
   const [editId, setEditId] = useState(null);
   const [updatedData, setUpdatedData] = useState({});
+  const token = localStorage.getItem("token") || "";
 
   useEffect(() => {
     getProducts();
@@ -33,12 +35,16 @@ const AdminProducts = () => {
       return;
     }
 
-    const dataToSave = {
-      ...updatedData,
-      price: priceNumber,
-    };
+    const formData = new FormData();
+    formData.append("name", updatedData.name);
+    formData.append("price", priceNumber);
+    formData.append("description", updatedData.description);
 
-    await updateProduct(editId, dataToSave);
+    if (updatedData.image instanceof File) {
+      formData.append("image", updatedData.image);
+    }
+
+    await updateProduct(editId, formData, true, token);
     await getProducts();
     setEditId(null);
     setUpdatedData({});
@@ -63,9 +69,13 @@ const AdminProducts = () => {
         patibienvenid@ a la pantalla de edición, mucho paticuidado con los cambios, los patitos
         están atentos
       </h3>
+      <Link to={"/products/newproduct"}>
+        <button>Crear un nuevo producto</button>
+      </Link>
       <table>
         <thead>
           <tr>
+            <th>Imágen</th>
             <th>Nombre</th>
             <th>Precio (€) </th>
             <th>Descripción</th>
@@ -75,6 +85,28 @@ const AdminProducts = () => {
         <tbody>
           {products?.map((product) => (
             <tr key={product._id}>
+              <td>
+                {editId === product._id ? (
+                  <input
+                    type="file"
+                    name="image"
+                    accept="image/*"
+                    onChange={(e) => setUpdatedData({ ...updatedData, image: e.target.files[0] })}
+                  />
+                ) : product.image ? (
+                  <img
+                    src={
+                      product.image.startsWith("http")
+                        ? product.image
+                        : `https://patukisapi.onrender.com/${product.image}`
+                    }
+                    alt={product.name}
+                    style={{ width: "60px", height: "auto" }}
+                  />
+                ) : (
+                  "Sin imagen"
+                )}
+              </td>
               <td>
                 {editId === product._id ? (
                   <input name="name" value={updatedData.name} onChange={handleChange} />

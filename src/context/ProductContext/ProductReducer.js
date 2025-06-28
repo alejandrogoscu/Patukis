@@ -12,6 +12,12 @@ const products = (state, action) => {
         product: action.payload,
       };
 
+    case "CREATE_PRODUCT":
+      return {
+        ...state,
+        product: [action.payload, ...state.products],
+      };
+
     case "UPDATE_PRODUCT":
       return {
         ...state,
