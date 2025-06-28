@@ -58,6 +58,18 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
+  const deleteProduct = async (_id) => {
+    try {
+      await axios.delete(`${API_URL}/${_id}`);
+      dispatch({
+        type: "DELETE_PRODUCT",
+        payload: _id,
+      });
+    } catch (error) {
+      console.error("Error al eliminar el producto:", error);
+    }
+  };
+
   const addToCart = (product) => {
     dispatch({
       type: "ADD_CART",
@@ -88,6 +100,7 @@ export const ProductProvider = ({ children }) => {
         clearCart,
         removeFromCart,
         updateProduct,
+        deleteProduct,
       }}
     >
       {children}

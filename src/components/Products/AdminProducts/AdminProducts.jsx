@@ -3,7 +3,7 @@ import { ProductContext } from "../../../context/ProductContext/ProductState";
 import "./adminproducts.css";
 
 const AdminProducts = () => {
-  const { products, getProducts, updateProduct } = useContext(ProductContext);
+  const { products, getProducts, updateProduct, deleteProduct } = useContext(ProductContext);
 
   const [editId, setEditId] = useState(null);
   const [updatedData, setUpdatedData] = useState({});
@@ -35,6 +35,13 @@ const AdminProducts = () => {
   const handleCancel = () => {
     setEditId(null);
     setUpdatedData({});
+  };
+
+  const handleDelete = async (_id) => {
+    if (confirm("¿Estás muy Patisegur@ de eliminar este producto? 🧨🐥")) {
+      await deleteProduct(_id);
+      alert("Producto eliminado con éxito 💨");
+    }
   };
 
   return (
@@ -92,9 +99,14 @@ const AdminProducts = () => {
                     </button>
                   </>
                 ) : (
-                  <button onClick={() => handleEdit(product)}>
-                    <span className="material-symbols-outlined">edit</span>
-                  </button>
+                  <>
+                    <button onClick={() => handleEdit(product)}>
+                      <span className="material-symbols-outlined">edit</span>
+                    </button>
+                    <button onClick={() => handleDelete(product._id)}>
+                      <span className="material-symbols-outlined">delete</span>
+                    </button>
+                  </>
                 )}
               </td>
             </tr>
