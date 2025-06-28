@@ -64,7 +64,7 @@ export const Profile = () => {
           {user.orders && user.orders.length > 0 ? (
             <ul className="profile__orders--list">
               {user.orders.map((item) => (
-                <li className="profile__orders--item" key={item}>
+                <li className="profile__orders--item" key={item._id}>
                   Pedido: {item._id}
                   <ul className="profile__orders--prodlist">
                     {item.products.map((producto) => (
