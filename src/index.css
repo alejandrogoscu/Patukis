@@ -21,7 +21,7 @@
   --oscuro: #1f1f1f;
 }
 
-@keyframes gradient {
+/* @keyframes gradient {
   0% {
     background-position: 0% 50%;
   }
@@ -31,7 +31,7 @@
   100% {
     background-position: 0% 50%;
   }
-}
+} */
 
 /* html,
 body,
