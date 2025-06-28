@@ -1,33 +1,95 @@
-import { createContext, useReducer } from 'react';
-import { initialState, userReducer } from './UserReducer';
-import axios from 'axios';
+import { createContext, useReducer } from "react";
+import UserReducer from "./UserReducer";
+import axios from "axios";
 
-export const UserContext = createContext();
+// Valores iniciales desde localStorage
+const token = localStorage.getItem("token") || "";
+const user = JSON.parse(localStorage.getItem("user")) || null;
+
+const initialState = {
+  token,
+  user,
+  isAuthenticated: !!token,
+};
+
+export const UserContext = createContext(initialState);
 
 export const UserProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(userReducer, initialState);
+  const [state, dispatch] = useReducer(UserReducer, initialState);
 
   const register = async (userData) => {
     try {
-      const res = await axios.post('https://patukisapi.onrender.com/users', userData);
-      console.log('Respuesta:', res.data);
-      dispatch({ type: 'REGISTER', payload: res.data });
+      const res = await axios.post("https://patukisapi.onrender.com/users", userData);
+      dispatch({ type: "REGISTER", payload: res.data });
       return true;
     } catch (error) {
-      console.error(error);
+      console.error("Error en el registro:", error.response?.data || error.message);
+      return false;
     }
   };
 
   const getUserProfile = async () => {
     try {
-      const token =
-        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NTZlNmRlZTlhNDM5ZDAyMzk3NDVhZiIsImlhdCI6MTc1MDUyNTcwN30.dNDPyZuqZdIWVs3efrZ62ahOR4bG9vYvFHFoqE6DzG8'; // HARDCODEADO AHORA MISMO.
-      const res = await axios.get('https://patukisapi.onrender.com/users/me', { headers: { Authorization: token } });
-      dispatch({ type: 'GET_USER', payload: res.data });
+      const token = localStorage.getItem("token");
+      const res = await axios.get("https://patukisapi.onrender.com/users/me", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      dispatch({ type: "GET_USER", payload: res.data });
     } catch (error) {
-      console.error('Error al obtener el usuario:', error);
+      console.error("Error al obtener el usuario:", error);
     }
   };
 
-  return <UserContext.Provider value={{ user: state.user, register, getUserProfile }}>{children}</UserContext.Provider>;
+  const login = async (userData) => {
+    try {
+      const res = await axios.post("https://patukisapi.onrender.com/users/login", userData);
+      const { token, user } = res.data;
+
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
+
+      dispatch({ type: "LOGIN", payload: { token, user } });
+      return true;
+    } catch (error) {
+      console.error("Error al hacer login:", error.response?.data || error.message);
+      return false;
+    }
+  };
+
+  // 3) LOGOUT: POST /users/logout + limpieza frontend
+  const logout = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      await axios.post(
+        "https://patukisapi.onrender.com/users/logout",
+        {},
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+    } catch (err) {
+      console.warn("Error en logout (ignorado):", err);
+    } finally {
+      dispatch({ type: "LOGOUT" });
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      localStorage.removeItem("cart");
+    }
+  };
+
+  return (
+    <UserContext.Provider
+      value={{
+        user: state.user,
+        token: state.token,
+        isAuthenticated: state.isAuthenticated,
+        register,
+        login,
+        logout,
+        getUserProfile,
+      }}
+    >
+      {children}
+    </UserContext.Provider>
+  );
 };

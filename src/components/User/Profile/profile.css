@@ -1,10 +1,11 @@
 .profile__container {
   width: 80%;
   display: flex;
+  margin: 0 auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: var(--azul);
+  color: var(--blanco);
   text-align: center;
 }
 
@@ -20,6 +21,9 @@
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
+  background-color: var(--azul);
+  border-radius: 25px;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.75);
 }
 
 .profile__info {
@@ -30,8 +34,8 @@
   gap: 15px;
   flex-flow: row wrap;
   padding: 15px;
-  border: 1px solid var(--naranja);
-  border-radius: 25px;
+  border-bottom: 4px solid var(--naranja);
+
   color: var(--blanco);
 }
 
@@ -53,9 +57,14 @@
 .profile__email,
 .profile__address {
   padding: 5px 20px 5px 15px;
+  font-weight: 600;
   color: var(--blanco);
-  background-color: var(--azul);
+  background-color: var(--naranja);
   border-radius: 15px;
+}
+
+.logout__btn {
+  margin-left: 10vw; /* Habría que buscar una dorma mejor */
 }
 
 .profile__whistlist {
@@ -64,6 +73,7 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+  color: var(--blanco);
 }
 
 .profile__whistlist--title {
@@ -83,8 +93,6 @@
   gap: 2px;
   padding: 0px 10px 14px 0px;
   list-style: none;
-
-  color: var(--blanco);
 }
 
 .profile__whistlist--image {
@@ -92,7 +100,7 @@
   border-radius: 10px;
   margin-bottom: 12px;
   overflow: hidden;
-  background-color: #ff9800;
+  background-color: var(--azul);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -109,13 +117,14 @@
   justify-content: center;
   align-items: center;
   scroll-snap-align: center;
-  background-color: var(--azul);
+  background-color: var(--naranja);
   border-radius: 20px;
   cursor: pointer;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
 }
 
 .profile__whistlist--msg {
-  color: var(--naranja);
+  color: var(--blanco);
 }
 
 .profile__orders--title {
@@ -131,8 +140,9 @@
 }
 
 .profile__orders--item {
-  border-top: 2px solid var(--azul);
+  border-top: 2px solid var(--blanco);
   padding: 8px;
+  font-weight: 600;
   color: var(--naranja);
 }
 
@@ -164,14 +174,14 @@
 }
 
 .profile__orders--msg {
-  color: var(--naranja);
+  color: var(--blanco);
 }
 
 /* ----------------------- BARRA SCROLL */
 
 .profile__whistlist--list {
-  --sb-track-color: #1f1f1f;
-  --sb-thumb-color: #4fc3f7;
+  --sb-track-color: var(--blanco);
+  --sb-thumb-color: var(--naranja);
   --sb-size: 3px;
 }
 

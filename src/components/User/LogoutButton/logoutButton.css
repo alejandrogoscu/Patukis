@@ -1,0 +1,17 @@
+.logout__btn {
+  margin-top: 20px;
+  padding: 5px 10px;
+  border-radius: 25px;
+  border: none;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--naranja);
+  background-color: var(--blanco);
+  border: 3px solid var(--blanco);
+
+  &:hover {
+    background-color: var(--naranja);
+    color: var(--blanco);
+  }
+}
