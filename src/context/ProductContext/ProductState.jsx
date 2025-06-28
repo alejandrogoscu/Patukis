@@ -46,6 +46,30 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
+  const updateProduct = async (_id, updatedData) => {
+    try {
+      const res = await axios.put(`${API_URL}/${_id}`, updatedData);
+      dispatch({
+        type: "UPDATE_PRODUCT",
+        payload: res.data,
+      });
+    } catch (error) {
+      console.error("Error al actualizar el producto:", error);
+    }
+  };
+
+  const deleteProduct = async (_id) => {
+    try {
+      await axios.delete(`${API_URL}/${_id}`);
+      dispatch({
+        type: "DELETE_PRODUCT",
+        payload: _id,
+      });
+    } catch (error) {
+      console.error("Error al eliminar el producto:", error);
+    }
+  };
+
   const addToCart = (product) => {
     dispatch({
       type: "ADD_CART",
@@ -75,6 +99,8 @@ export const ProductProvider = ({ children }) => {
         addToCart,
         clearCart,
         removeFromCart,
+        updateProduct,
+        deleteProduct,
       }}
     >
       {children}
