@@ -10,7 +10,7 @@ export const Profile = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!isAuthenticated || !token) {
       navigate('/login');
     }
   }, [isAuthenticated, navigate]);
