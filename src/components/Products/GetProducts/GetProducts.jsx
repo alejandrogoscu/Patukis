@@ -30,7 +30,15 @@ const GetProducts = () => {
           <div className="card" key={product._id}>
             <div className="card-prod-img-cont">
               {product.image ? (
-                <img src={product.image} alt={product.name} className="img-patitos" />
+                <img
+                  src={
+                    product.image.startsWith("http")
+                      ? product.image
+                      : `https://patukisapi.onrender.com/${product.image}`
+                  }
+                  alt={product.name}
+                  className="img-patitos"
+                />
               ) : null}
             </div>
             <div className="prod-info">

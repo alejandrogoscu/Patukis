@@ -33,7 +33,15 @@ const GetOneProduct = () => {
   return (
     <div className="main-container">
       <div className="img-patito-container">
-        <img src={product.image} alt={product.name} className="img-patito" />
+        <img
+          src={
+            product.image.startsWith("http")
+              ? product.image
+              : `https://patukisapi.onrender.com/${product.image}`
+          }
+          alt={product.name}
+          className="img-patito"
+        />
         <BlobSVG className="blob" />
       </div>
       <div className="btns-container">
