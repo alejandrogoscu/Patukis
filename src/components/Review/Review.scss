@@ -1,0 +1,72 @@
+/* src/components/Review/Review.scss (o src/components/ReviewForm/ReviewForm.scss) */
+@use "sass:color";
+/* Variables de color (si no las importas globalmente o si este es un archivo .css) */
+/* Si usas SCSS y tienes variables globales, puedes eliminarlas de aquí y usar $primary-blue, etc. */
+/* Si este es un archivo .css, reemplaza las variables SCSS por sus valores directos. */
+$primary-blue: #004cff;
+$primary-orange: #ff9900;
+$text-dark: #333;
+$text-light: #fff; // No se usa directamente aquí, pero es para coherencia.
+$background-dark: #222; // No se usa directamente aquí, pero es para coherencia.
+$card-background-light: #fefefe; // Fondo casi blanco para las tarjetas de reseñas
+$border-color: #e0e0e0;
+$shadow-color: rgba(0, 0, 0, 0.15);
+
+
+/* Estilos para el contenedor principal del formulario de reseña */
+.review-form-container {
+  max-width: 600px; /* Ancho máximo del formulario */
+  margin: 0 auto; /* Centra el formulario dentro de su contenedor padre */
+  padding: 20px;
+  background-color: $card-background-light; /* Fondo claro como las tarjetas de tu diseño */
+  border: 1px solid $border-color;
+  border-radius: 15px; /* Bordes redondeados como las tarjetas de producto */
+  box-shadow: 0 4px 10px $shadow-color; /* Sombra sutil */
+
+  h2 {
+    text-align: center;
+    color: $primary-blue; /* Título del formulario en azul */
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+  }
+
+  /* Estilos para las etiquetas de los campos de Ant Design */
+  .ant-form-item-label > label {
+    font-weight: bold;
+    color: $text-dark; /* Etiqueta del comentario en color oscuro */
+  }
+
+  /* Estilos para el campo de entrada (TextArea de Ant Design) */
+  .ant-input {
+    border-radius: 8px; /* Bordes redondeados para el input */
+  }
+
+  /* Estilos para el botón de envío (Button type="primary" de Ant Design) */
+  .ant-btn-primary {
+    background-color: $primary-orange; /* Botón naranja */
+    border-color: $primary-orange;
+    width: 100%; /* Botón de ancho completo */
+    padding: 10px 15px;
+    height: auto; /* Ajusta la altura automáticamente con el padding */
+    font-size: 1rem;
+    border-radius: 20px; /* Bordes muy redondeados para que sea tipo píldora */
+    color: $text-light; /* Color del texto del botón (blanco) */
+    font-weight: bold; /* Texto del botón en negrita */
+    transition: background-color 0.3s ease; /* Transición suave al pasar el ratón */
+
+  
+  }
+}
+
+/* Media Queries específicas para el formulario si necesitas ajustes muy finos */
+@media (max-width: 768px) {
+  .review-form-container {
+    padding: 15px; /* Reduce el padding en pantallas pequeñas */
+    margin: 15px auto; /* Ajusta los márgenes para que no se pegue a los bordes */
+    max-width: 95%; /* Permite que ocupe más ancho en móviles */
+  }
+  .ant-btn-primary {
+    padding: 8px 12px; /* Ajuste de padding de botón en móvil */
+    font-size: 0.9rem; /* Reduce un poco el tamaño de fuente del botón */
+  }
+}
