@@ -50,6 +50,18 @@
   font-size: 1.8rem;
 }
 
+.home__infocontainer {
+  width: 900px;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home__info--img {
+  width: 600px;
+}
+
 @media (width < 720px) {
   .home__videocontainer {
     width: 80%;
@@ -70,5 +82,9 @@
   .home__video3 {
     align-self: end;
     margin-top: -40px;
+  }
+
+  .home__info--img {
+    width: 340px;
   }
 }
