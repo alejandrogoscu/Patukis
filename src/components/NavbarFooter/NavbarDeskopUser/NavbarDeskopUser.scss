@@ -25,6 +25,7 @@ $active-item-color: rgba(133, 130, 130, 0.338);
 
   .navbar-list {
     list-style: none;
+    padding-inline-start: 0px;
     margin: 0;
     padding: 0;
     display: flex;
@@ -42,7 +43,7 @@ $active-item-color: rgba(133, 130, 130, 0.338);
   }
 
   .navbar-item {
-    flex-grow: 1;
+    /* flex-grow: 1; */
     text-align: center;
   }
 
@@ -87,6 +88,9 @@ $active-item-color: rgba(133, 130, 130, 0.338);
       margin-right: 5px;
       margin-bottom: 0;
       object-fit: contain;
+    }
+
+    .navbar-prods {
     }
 
     .navbar-text {
