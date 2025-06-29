@@ -1,14 +1,57 @@
-.material-symbols-outlined {
-  font-size: 16px;
-  color: #e3e3e3;
-  cursor: pointer;
+.admin__container {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.admin__title {
+  font-size: 1.8rem;
+  color: var(--blanco);
+}
+
+.admin__subtitle {
+  color: var(--blanco);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.admin__btnNew {
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: none;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background-color: var(--azul);
+
+  &:hover {
+    background-color: var(--blanco);
+    color: var(--azul);
+  }
+}
+
+.admin__table-container {
+  width: 100%;
+  overflow-x: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  padding: 20px 0px;
 }
 
 table {
-  border-collapse: separate;
-  border-spacing: 0.3rem 0.5rem;
-  width: 100%;
-  table-layout: auto;
+  width: 80%;
+  border-spacing: 4px;
+  color: var(--blanco);
+  background-color: var(--azul);
+  border-radius: 25px;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.45);
+  padding: 8px;
 }
 
 table input {
@@ -38,11 +81,42 @@ table tr {
 
 table td,
 table th {
-  border: var(--azul) 1px solid;
-  border-radius: 20px;
-  padding: 8px 8px;
+  border-bottom: 3px solid var(--naranja);
+  padding: 8px;
+}
+
+.admin__btnEdit,
+.admin__btndelete {
+  padding: 4px 8px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 900;
+  border: 2px solid var(--azul);
+  background-color: var(--blanco);
+  color: var(--azul);
+}
+
+.admin__btnEdit:hover {
+  background-color: var(--naranja);
+  color: var(--blanco);
+}
+
+.admin__btndelete:hover {
+  background-color: red;
 }
 
 .icons-column {
   border: 0px;
+}
+
+.material-symbols-outlined {
+  font-size: 16px;
+  color: #e3e3e3;
+  cursor: pointer;
+}
+
+@media (width < 720px) {
+  .admin__table-container {
+    display: block;
+  }
 }
