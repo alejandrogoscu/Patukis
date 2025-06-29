@@ -16,12 +16,19 @@ const GetOneProduct = () => {
     getOneProduct(_id);
   }, [_id]);
 
-  const isLiked = useMemo(() => {
+  /*   const isLiked = useMemo(() => {
     if (!product) return false;
     return wishlist.some((item) => item._id === product._id);
-  }, [wishlist, product]);
+  }, [wishlist, product]); */
+
+  const isLiked = wishlist.some((item) => item._id === product._id);
 
   const toggleLike = async () => {
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+
     if (!isLiked) {
       await addToWishList(product._id);
     } else {
