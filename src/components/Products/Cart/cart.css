@@ -135,6 +135,11 @@
 
 .cart__empty-btnreturn {
   background-color: var(--azul);
+
+  &:hover {
+    background-color: var(--blanco);
+    color: var(--azul);
+  }
 }
 
 @media (width < 560px) {
