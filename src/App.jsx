@@ -6,7 +6,6 @@ import { RegisterConfirmation } from './components/User/RegisterConfirmation/Reg
 import LoginForm from './components/User/LoginForm/LoginForm';
 import LogoutButton from './components/User/LogoutButton/LogoutButton';
 import { Profile } from './components/User/Profile/Profile';
-import Responsive from './components/NavbarFooter/Responsive/Responsive';
 import GetProducts from './components/Products/GetProducts/GetProducts';
 import GetOneProduct from './components/Products/GetOneProduct/GetOneProduct';
 import { Home } from './components/Home/Home';
@@ -14,6 +13,9 @@ import Cart from './components/Products/Cart/Cart';
 import { OrderProvider } from './context/OrderContext/OrderState';
 import CreateProduct from './components/Products/CreateProduct/CreateProduct';
 import PrivateRoute from './components/Guards/PrivateRoute';
+
+import { NavbarContainer } from './components/Navbar/NavbarContainer';
+
 import './App.css';
 
 function App() {
@@ -23,7 +25,8 @@ function App() {
         <UserProvider>
           <ProductProvider>
             <OrderProvider>
-              <Responsive>
+              <NavbarContainer />
+              <main>
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/products" element={<GetProducts />} />
@@ -45,7 +48,7 @@ function App() {
                   <Route path="/logout" element={<LogoutButton />} />
                   <Route path="/profile" element={<Profile />} />
                 </Routes>
-              </Responsive>
+              </main>
             </OrderProvider>
           </ProductProvider>
         </UserProvider>
