@@ -85,7 +85,7 @@ Desarrollar un frontend **robusto** y **responsivo** con funcionalidades esencia
 1. **Clonar el repositorio**
 
    ```bash
-   git clone <URL_DEL_REPOSITORIO>
+   git clone https://github.com/alejandrogoscu/Patukis
    cd Patukis
    ```
 
