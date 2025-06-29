@@ -11,13 +11,13 @@ const Cart = () => {
   const { isAuthenticated, token } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const { success, setSuccess } = useState(false);
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     if (success) {
       const timer = setTimeout(() => {
         navigate('/OrderConfirmation');
-      }, 3000);
+      }, 1000);
       return () => clearTimeout(timer);
     }
   }, [success, navigate]);
@@ -41,8 +41,10 @@ const Cart = () => {
     try {
       const productIds = cart.map((item) => item._id);
       await createOrder(productIds);
-      clearCart();
       setSuccess(true);
+      setTimeout(() => {
+        clearCart();
+      }, 2000);
     } catch (error) {
       console.error(error);
     }

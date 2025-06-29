@@ -28,7 +28,7 @@ function NavbarDeskopUser() {
 
         <li className="navbar-item">
           <NavLink to="/Products" end className="navbar-link">
-            <img src={patoIcono} alt="Products" className="navbar-icon-img navbar-prods" />
+            <img src={patoIcono} alt="Products" className="navbar-icon-img" />
             PRODUCTOS
           </NavLink>
         </li>
