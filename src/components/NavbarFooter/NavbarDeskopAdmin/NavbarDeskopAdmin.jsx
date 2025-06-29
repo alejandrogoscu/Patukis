@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
-import patoIconoCasco from '../../assets/icons/patito-casco-amarillo.svg';
-import AdminIconoCasco from '../../assets/icons/user-casco-amarillo.svg';
-import homeIcono from '../../assets/icons/Home.svg';
-import SettingsIcono from '../../assets/icons/Settings.svg';
+import patoIconoCasco from '../../../assets/icons/patito-casco-amarillo.svg';
+import AdminIconoCasco from '../../../assets/icons/user-casco-amarillo.svg';
+import homeIcono from '../../../assets/icons/Home.svg';
+import SettingsIcono from '../../../assets/icons/Settings.svg';
 
 let link = ' ';
 
@@ -30,7 +30,7 @@ function NavbarDeskopAdmin() {
         </li>
 
         <li className="navbar-item">
-          <NavLink to="/Perfil" className="navbar-link">
+          <NavLink to="/profile" className="navbar-link">
             <img src={AdminIconoCasco} alt="Perfil" className="navbar-icon-img" />
             PERFIL
           </NavLink>

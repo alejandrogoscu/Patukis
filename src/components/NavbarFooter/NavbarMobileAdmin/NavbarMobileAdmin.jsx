@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
-import patoIcono from '../../assets/icons/patito-casco-azul.svg';
-import userIconoCasco from '../../assets/icons/user-casco-azul.svg';
-import homeIcono from '../../assets/icons/Home.svg';
-import SettingsIcono from '../../assets/icons/Settings.svg';
+import patoIcono from '../../../assets/icons/patito-casco-azul.svg';
+import userIconoCasco from '../../../assets/icons/user-casco-azul.svg';
+import homeIcono from '../../../assets/icons/Home.svg';
+import SettingsIcono from '../../../assets/icons/Settings.svg';
 
 function NavbarMobileAdmin() {
   return (
