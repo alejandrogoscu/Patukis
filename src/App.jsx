@@ -13,6 +13,7 @@ import { Home } from './components/Home/Home';
 import Cart from './components/Products/Cart/Cart';
 import { OrderProvider } from './context/OrderContext/OrderState';
 import CreateProduct from './components/Products/CreateProduct/CreateProduct';
+import PrivateRoute from './components/Guards/PrivateRoute';
 import './App.css';
 
 function App() {
@@ -28,7 +29,16 @@ function App() {
                   <Route path="/products" element={<GetProducts />} />
                   <Route path="/products/:_id" element={<GetOneProduct />} />
                   <Route path="/products/cart" element={<Cart />} />
-                  <Route path="/products/newproduct" element={<CreateProduct />} />
+
+                  <Route
+                    path="/products/newproduct"
+                    element={
+                      <PrivateRoute role="admin">
+                        <CreateProduct />
+                      </PrivateRoute>
+                    }
+                  />
+
                   <Route path="/register" element={<RegisterForm />} />
                   <Route path="/confirmation" element={<RegisterConfirmation />} />
                   <Route path="/login" element={<LoginForm />} />
