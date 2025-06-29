@@ -11,12 +11,12 @@ const Cart = () => {
 
   if (!cart || cart.length === 0) {
     return (
-      <>
-        <span>Tu carrito está vacío 🛒</span>
+      <div className="cart__empty-container">
+        <h3 className="cart__empty-text">Tu carrito está vacío</h3>
         <Link to="/products">
-          <button>Volver a productos</button>
+          <button className="cart__empty-btnreturn">Volver a productos</button>
         </Link>
-      </>
+      </div>
     );
   }
 
@@ -30,23 +30,29 @@ const Cart = () => {
   return (
     <div className="cart-body-container">
       <Link to="/products">
-        <button>Volver a productos</button>
+        <button className="cart__btn-return">Volver a productos</button>
       </Link>
-      <h1>Estos son tus productos</h1>
-      {cart.map((item, i) => (
-        <div key={i} className="cart-prod-container">
-          <img src={item.image} alt={item.name} className="cart-img-prod" />
-          <span>{item.name}</span>
-          <span>{item.price.toFixed(2)} €</span>
-          <button onClick={() => removeFromCart(item._id)} className="cart-remove-btn">
-            X
+      <h1 className="cart__title">Tus productos</h1>
+      <div className="cart__resume-container">
+        {cart.map((item, i) => (
+          <div key={i} className="cart__prod-container">
+            <img src={item.image} alt={item.name} className="cart__img-prod" />
+            <span className="cart__name-prod">{item.name}</span>
+            <span>{item.price.toFixed(2)} €</span>
+            <button className="cart__btn-remove" onClick={() => removeFromCart(item._id)}>
+              X
+            </button>
+          </div>
+        ))}
+        <h3>Total compra: {total.toFixed(2)} €</h3>
+        <div className="cart-btns-container">
+          <button className="cart__btn-empty" onClick={clearCart}>
+            Vaciar carrito
+          </button>
+          <button className="cart__btn-buy" onClick={createNewOrder}>
+            Confirmar pedido
           </button>
         </div>
-      ))}
-      <h3>Total compra: {total.toFixed(2)} €</h3>
-      <div className="cart-btns-container">
-        <button onClick={clearCart}>Vaciar carrito</button>
-        <button onClick={createNewOrder}>Confirmar pedido</button>
       </div>
     </div>
   );
