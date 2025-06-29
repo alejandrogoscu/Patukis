@@ -89,3 +89,8 @@
     width: 340px;
   }
 }
+
+.react-bits-container {
+  height: 600px;
+  width: 1000px;
+}
