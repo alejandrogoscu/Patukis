@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { ProductContext } from '../../../context/ProductContext/ProductState';
 import { OrderContext } from '../../../context/OrderContext/OrderState';
 import { UserContext } from '../../../context/UserContext/UserState';
@@ -10,6 +10,17 @@ const Cart = () => {
   const { createOrder } = useContext(OrderContext);
   const { isAuthenticated, token } = useContext(UserContext);
   const navigate = useNavigate();
+
+  const { success, setSuccess } = useState(false);
+
+  useEffect(() => {
+    if (success) {
+      const timer = setTimeout(() => {
+        navigate('/OrderConfirmation');
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [success, navigate]);
 
   if (!cart || cart.length === 0) {
     return (
@@ -31,6 +42,7 @@ const Cart = () => {
       const productIds = cart.map((item) => item._id);
       await createOrder(productIds);
       clearCart();
+      setSuccess(true);
     } catch (error) {
       console.error(error);
     }

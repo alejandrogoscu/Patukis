@@ -11,6 +11,7 @@ import GetProducts from './components/Products/GetProducts/GetProducts';
 import GetOneProduct from './components/Products/GetOneProduct/GetOneProduct';
 import { Home } from './components/Home/Home';
 import Cart from './components/Products/Cart/Cart';
+import { OrderConfirmacion } from './components/Products/OrderConfirmation/OrderConfirmation';
 import { OrderProvider } from './context/OrderContext/OrderState';
 import CreateProduct from './components/Products/CreateProduct/CreateProduct';
 import PrivateRoute from './components/Guards/PrivateRoute';
@@ -29,7 +30,7 @@ function App() {
                   <Route path="/products" element={<GetProducts />} />
                   <Route path="/products/:_id" element={<GetOneProduct />} />
                   <Route path="/products/cart" element={<Cart />} />
-
+                  <Route path="/orderconfirmation" element={<OrderConfirmacion />} />
                   <Route
                     path="/products/newproduct"
                     element={
