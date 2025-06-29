@@ -1,11 +1,15 @@
 .main-container {
+  width: 80%;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-content: center;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .img-patito-container {
+  position: relative;
   display: flex;
   justify-content: center;
   max-width: 100%;
@@ -13,7 +17,6 @@
   max-height: 400px;
   margin: 0 auto;
   overflow: hidden;
-  flex: 1;
   margin: 10px;
 }
 
@@ -33,20 +36,13 @@
   z-index: 0;
 }
 
-.like-button {
-  background: var(--naranja);
-  display: flex;
-  border: none;
-  cursor: pointer;
-  font-size: 32px;
-  color: white;
-  padding: 0 1rem;
-  text-align: center;
-  align-items: center;
-}
-
-.material-symbols-outlined {
-  font-size: 32px;
+.product__info--container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 25px;
+  color: var(--blanco);
+  background-color: var(--azul);
 }
 
 .btns-container {
@@ -56,6 +52,58 @@
   align-content: center;
 }
 
-h1 {
-  font-size: 2em;
+.like-button,
+.buy-button {
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: none;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.like-button {
+  padding: 8px 20px;
+  background-color: var(--blanco);
+  border: 3px solid var(--blanco);
+  color: var(--azul);
+  text-align: center;
+
+  &:hover {
+    background-color: var(--azul);
+    color: var(--blanco);
+  }
+}
+
+.buy-button {
+  background-color: var(--naranja);
+  border: 3px solid var(--naranja);
+
+  &:hover {
+    background-color: var(--blanco);
+    color: var(--naranja);
+  }
+}
+
+.material-symbols-outlined {
+  font-size: 1.8rem;
+  color: var(--azul);
+
+  &:hover {
+    color: var(--blanco);
+  }
+}
+
+.show__product--name {
+  margin-bottom: px;
+}
+
+.show__product--price {
+  color: var(--blanco);
+  margin-top: 10px;
+}
+
+.show__product--text {
+  font-size: 1.1rem;
+  font-weight: 600;
 }

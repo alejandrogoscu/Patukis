@@ -10,9 +10,10 @@
 }
 
 .confirmation__title {
-  margin-bottom: 55px;
+  margin-bottom: 25px;
   font-size: 2rem;
   font-weight: 700;
+  color: var(--blanco);
 }
 
 .confirmation__img {
@@ -22,6 +23,7 @@
 }
 
 .confirmation__text {
-  font-size: 1.2rem;
-  font-weight: 300;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--blanco);
 }

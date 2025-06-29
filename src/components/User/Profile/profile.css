@@ -1,5 +1,5 @@
 .profile__container {
-  width: 80%;
+  width: 70%;
   display: flex;
   margin: 0 auto;
   flex-direction: column;
@@ -10,7 +10,8 @@
 }
 
 .profile__title {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
+  color: var(--blanco);
 }
 
 .profile__info--container {
