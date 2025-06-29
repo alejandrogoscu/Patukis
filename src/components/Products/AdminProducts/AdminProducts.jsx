@@ -131,10 +131,10 @@ const AdminProducts = () => {
                 <td className="icons-column">
                   {editId === product._id ? (
                     <>
-                      <button onClick={handleSave}>
+                      <button className="admin__btnSave" onClick={handleSave}>
                         <span className="material-symbols-outlined">Save</span>
                       </button>
-                      <button onClick={handleCancel}>
+                      <button className="admin__btnNoedit" onClick={handleCancel}>
                         <span className="material-symbols-outlined">edit_off</span>
                       </button>
                     </>

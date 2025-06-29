@@ -57,9 +57,9 @@ table {
 table input {
   width: 100%;
   box-sizing: border-box;
-  padding: 8px 8px;
+  padding: 8px;
   font-size: 14px;
-  border-radius: 16px;
+  border-radius: 0px;
   background-color: #fff;
   color: var(--naranja);
   transition: border-color 0.3s ease;
@@ -86,7 +86,9 @@ table th {
 }
 
 .admin__btnEdit,
-.admin__btndelete {
+.admin__btndelete,
+.admin__btnSave,
+.admin__btnNoedit {
   padding: 4px 8px;
   border-radius: 10px;
   font-size: 1rem;
@@ -94,6 +96,20 @@ table th {
   border: 2px solid var(--azul);
   background-color: var(--blanco);
   color: var(--azul);
+}
+
+.admin__btnSave,
+.admin__btnNoedit {
+  margin-bottom: 2px;
+  border: 2px solid var(--naranja);
+}
+
+.admin__btnSave:hover {
+  background-color: green;
+}
+
+.admin__btnNoedit:hover {
+  background-color: var(--naranja);
 }
 
 .admin__btnEdit:hover {
