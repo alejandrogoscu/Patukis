@@ -1,13 +1,15 @@
 import { useContext } from 'react';
 import { ProductContext } from '../../../context/ProductContext/ProductState';
 import { OrderContext } from '../../../context/OrderContext/OrderState';
-import { Link } from 'react-router-dom';
-
+import { UserContext } from '../../../context/UserContext/UserState';
+import { Link, useNavigate } from 'react-router-dom';
 import './cart.css';
 
 const Cart = () => {
   const { cart, clearCart, removeFromCart } = useContext(ProductContext);
   const { createOrder } = useContext(OrderContext);
+  const { isAuthenticated, token } = useContext(UserContext);
+  const navigate = useNavigate();
 
   if (!cart || cart.length === 0) {
     return (
@@ -21,9 +23,17 @@ const Cart = () => {
   }
 
   const createNewOrder = async () => {
-    const productIds = cart.map((item) => item._id);
-    await createOrder(productIds);
-    clearCart();
+    if (!isAuthenticated || !token) {
+      navigate('/login', { state: { from: '/cart' } });
+      return;
+    }
+    try {
+      const productIds = cart.map((item) => item._id);
+      await createOrder(productIds);
+      clearCart();
+    } catch (error) {
+      console.error(error);
+    }
   };
   const total = cart.reduce((acc, item) => acc + item.price, 0);
 
