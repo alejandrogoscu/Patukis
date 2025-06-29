@@ -10,7 +10,8 @@
 }
 
 .profile__title {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
+  color: var(--blanco);
 }
 
 .profile__info--container {
