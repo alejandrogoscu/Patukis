@@ -1,15 +1,16 @@
-import { useContext, useEffect, useMemo, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { ProductContext } from '../../../context/ProductContext/ProductState';
-import { UserContext } from '../../../context/UserContext/UserState';
-import './getOneProduct.css';
-import BlobSVG from '../Blob/Blob';
+import { useContext, useEffect, useMemo, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { ProductContext } from "../../../context/ProductContext/ProductState";
+import { UserContext } from "../../../context/UserContext/UserState";
+import "./getOneProduct.css";
+import BlobSVG from "../Blob/Blob";
 
 const GetOneProduct = () => {
   const { _id } = useParams();
 
   const { getOneProduct, product, addToCart } = useContext(ProductContext);
-  const { addToWishList, removeFromWishList, wishlist } = useContext(UserContext);
+  const { addToWishList, removeFromWishList, wishlist, user } = useContext(UserContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getOneProduct(_id);
@@ -32,9 +33,18 @@ const GetOneProduct = () => {
 
   return (
     <div className="main-container">
+      <div className="back-btn-container">
+        <Link to="/products">
+          <button className="cart__btn-return">Volver a productos</button>
+        </Link>
+      </div>
       <div className="img-patito-container">
         <img
-          src={product.image.startsWith('http') ? product.image : `https://patukisapi.onrender.com/${product.image}`}
+          src={
+            product.image.startsWith("http")
+              ? product.image
+              : `https://patukisapi.onrender.com/${product.image}`
+          }
           alt={product.name}
           className="img-patito"
         />
@@ -43,7 +53,10 @@ const GetOneProduct = () => {
       <div className="product__info--container">
         <div className="btns-container">
           <button onClick={toggleLike} className="like-button">
-            <span className="material-symbols-outlined" style={{ fontVariationSettings: `"FILL" ${isLiked ? 1 : 0}` }}>
+            <span
+              className="material-symbols-outlined"
+              style={{ fontVariationSettings: `"FILL" ${isLiked ? 1 : 0}` }}
+            >
               favorite
             </span>
           </button>
