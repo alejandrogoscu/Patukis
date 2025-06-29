@@ -60,6 +60,7 @@
   font-family: inherit;
   font-size: 1.1rem;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .like-button {
@@ -106,4 +107,10 @@
 .show__product--text {
   font-size: 1.1rem;
   font-weight: 600;
+}
+
+.back-btn-container {
+  display: flex;
+  justify-content: start;
+  text-decoration: none;
 }

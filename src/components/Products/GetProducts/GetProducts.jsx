@@ -1,9 +1,9 @@
-import { useContext, useEffect } from 'react';
-import { ProductContext } from '../../../context/ProductContext/ProductState';
-import './getProducts.css';
-import { Link } from 'react-router-dom';
-import { UserContext } from '../../../context/UserContext/UserState';
-import AdminProducts from '../AdminProducts/AdminProducts';
+import { useContext, useEffect } from "react";
+import { ProductContext } from "../../../context/ProductContext/ProductState";
+import "./getProducts.css";
+import { Link } from "react-router-dom";
+import { UserContext } from "../../../context/UserContext/UserState";
+import AdminProducts from "../AdminProducts/AdminProducts";
 
 const GetProducts = () => {
   const { products, getProducts, addToCart } = useContext(ProductContext);
@@ -13,7 +13,7 @@ const GetProducts = () => {
     getProducts();
   }, []);
 
-  if (user?.role === 'mamapato') {
+  if (user?.role === "mamapato") {
     return (
       <>
         <AdminProducts />
@@ -25,7 +25,6 @@ const GetProducts = () => {
     <>
       <div className="products__container">
         <h1 className="products__title">Nuestros Patitos</h1>
-        <div className="filters-container"></div>
         <main className="products-crds">
           {products.map((product) => (
             <div className="card" key={product._id}>
@@ -33,7 +32,7 @@ const GetProducts = () => {
                 {product.image ? (
                   <img
                     src={
-                      product.image.startsWith('http')
+                      product.image.startsWith("http")
                         ? product.image
                         : `https://patukisapi.onrender.com/${product.image}`
                     }

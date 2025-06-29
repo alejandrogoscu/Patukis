@@ -1,18 +1,18 @@
-import { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../../../context/UserContext/UserState';
-import './loginForm.css';
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../../context/UserContext/UserState";
+import "./loginForm.css";
 
 const LoginForm = () => {
   const initialValue = {
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   };
 
   const navigate = useNavigate();
   const [FormData, setFormData] = useState(initialValue);
   const [success, setSuccess] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const { login } = useContext(UserContext);
 
   const clearState = () => {
@@ -25,32 +25,32 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
     const wasSuccesful = await login(FormData);
     if (wasSuccesful) {
       setSuccess(true);
       clearState();
     } else {
-      setError('Correo o contraseña incorrectos');
+      setError("Correo o contraseña incorrectos");
     }
   };
 
   useEffect(() => {
     if (success) {
       const timer = setTimeout(() => {
-        navigate('/');
+        navigate("/");
       }, 1000);
       return () => clearTimeout(timer);
     }
   }, [success, navigate]);
 
   const goToRegister = () => {
-    navigate('/register');
+    navigate("/register");
   };
 
   return (
     <div className="login__container">
-      <h2 className="login__title">Iniciar Sesión</h2>
+      <h1 className="login__title">Iniciar Sesión</h1>
       <form className="login__form" onSubmit={handleSubmit}>
         <label className="login__label" htmlFor="email">
           Correo Electrónico

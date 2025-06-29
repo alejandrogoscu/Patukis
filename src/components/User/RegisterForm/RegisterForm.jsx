@@ -1,14 +1,14 @@
-import { useContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../../../context/UserContext/UserState';
-import './registerForm.css';
+import { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../../context/UserContext/UserState";
+import "./registerForm.css";
 
 export const RegisterForm = () => {
   const initialValue = {
-    name: '',
-    last_name: '',
-    email: '',
-    password: '',
+    name: "",
+    last_name: "",
+    email: "",
+    password: "",
   };
 
   const navigate = useNavigate();
@@ -37,7 +37,7 @@ export const RegisterForm = () => {
   useEffect(() => {
     if (success) {
       const timer = setTimeout(() => {
-        navigate('/confirmation');
+        navigate("/confirmation");
       }, 1000);
       return () => clearTimeout(timer);
     }
@@ -45,7 +45,7 @@ export const RegisterForm = () => {
 
   return (
     <div className="register__container">
-      <h2 className="register__title">Registrate</h2>
+      <h1 className="register__title">Registrate</h1>
 
       <form className="register__form" onSubmit={handleSubmit}>
         <label className="register__label" htmlFor="name">

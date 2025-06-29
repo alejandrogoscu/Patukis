@@ -1,9 +1,9 @@
-import { useContext, useState, useEffect } from 'react';
-import { ProductContext } from '../../../context/ProductContext/ProductState';
-import { OrderContext } from '../../../context/OrderContext/OrderState';
-import { UserContext } from '../../../context/UserContext/UserState';
-import { Link, useNavigate } from 'react-router-dom';
-import './cart.css';
+import { useContext, useState, useEffect } from "react";
+import { ProductContext } from "../../../context/ProductContext/ProductState";
+import { OrderContext } from "../../../context/OrderContext/OrderState";
+import { UserContext } from "../../../context/UserContext/UserState";
+import { Link, useNavigate } from "react-router-dom";
+import "./cart.css";
 
 const Cart = () => {
   const { cart, clearCart, removeFromCart } = useContext(ProductContext);
@@ -11,13 +11,13 @@ const Cart = () => {
   const { isAuthenticated, token } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const { success, setSuccess } = useState(false);
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     if (success) {
       const timer = setTimeout(() => {
-        navigate('/OrderConfirmation');
-      }, 3000);
+        navigate("/OrderConfirmation");
+      }, 1000);
       return () => clearTimeout(timer);
     }
   }, [success, navigate]);
@@ -25,6 +25,7 @@ const Cart = () => {
   if (!cart || cart.length === 0) {
     return (
       <div className="cart__empty-container">
+        <h1>Este es tu carrito!</h1>
         <h3 className="cart__empty-text">Tu carrito está vacío</h3>
         <Link to="/products">
           <button className="cart__empty-btnreturn">Volver a productos</button>
@@ -35,14 +36,16 @@ const Cart = () => {
 
   const createNewOrder = async () => {
     if (!isAuthenticated || !token) {
-      navigate('/login', { state: { from: '/cart' } });
+      navigate("/login", { state: { from: "/cart" } });
       return;
     }
     try {
       const productIds = cart.map((item) => item._id);
       await createOrder(productIds);
-      clearCart();
       setSuccess(true);
+      setTimeout(() => {
+        clearCart();
+      }, 2000);
     } catch (error) {
       console.error(error);
     }
@@ -51,6 +54,7 @@ const Cart = () => {
 
   return (
     <div className="cart-body-container">
+      <h1>Este es tu carrito!</h1>
       <Link to="/products">
         <button className="cart__btn-return">Volver a productos</button>
       </Link>

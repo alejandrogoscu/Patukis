@@ -24,8 +24,7 @@ export const Profile = () => {
   if (!user) return <p className="profile__msgerror">No se encontraron datos del usuario.</p>;
   return (
     <div className="profile__container">
-      <h2 className="profile__title">Perfil de Usuario</h2>
-
+      <h1 className="profile__title">Perfil de Usuario</h1>
       <div className="profile__info--container">
         <section className="profile__info">
           <div className="profile__img--container">
