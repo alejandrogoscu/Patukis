@@ -2,9 +2,9 @@ import { useContext, useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ProductContext } from "../../../context/ProductContext/ProductState";
 // al añadir reseñas 
-import Review from "../../Review/Review"; // O '../Review/Review' si no usas la extensión .jsx
-import axios from "axios"; // Necesario para hacer las peticiones GET a las reseñas
-import { message } from 'antd'; // Para mostrar notificaciones de Ant Design
+import Review from "../../Review/Review"; 
+import axios from "axios"; 
+import { message } from 'antd';
 import { UserContext } from "../../../context/UserContext/UserState";
 
 
@@ -44,34 +44,42 @@ const GetOneProduct = () => {
     const fetchReviews = async () => {
       if (currentProductId) {
         setLoadingReviews(true);
-        try {
-          const authToken = localStorage.getItem('authToken');
-          const headers = authToken ? { Authorization: `Bearer ${authToken}` } : {};
- console.log(`DEBUG GetOneProduct.jsx: Intentando axios.get de reseñas a: ${REVIEWS_API_BASE_URL}/reviews`);
-        console.log(`DEBUG GetOneProduct.jsx: currentProductId es: ${currentProductId}`);
+         try {
+        const authToken = localStorage.getItem('token');
+        const headers = authToken ? { Authorization: `Bearer ${authToken}` } : {};
 
- const res = await axios.get(`${REVIEWS_API_BASE_URL}/reviews`, { headers });
+        console.log(`DEBUG: Attempting to fetch reviews from: ${REVIEWS_API_BASE_URL}/reviews`);
+        console.log(`DEBUG: Filtering reviews for product ID: ${currentProductId}`);
 
-          
-          
+        const res = await axios.get(`${REVIEWS_API_BASE_URL}/reviews`, { headers });
+        console.log('DEBUG: Full API response for reviews:', res.data); 
 
-         
-          const allReviews = res.data || []; 
-          const filteredReviews = allReviews.filter(review => review.product === currentProductId);
+        const allReviews = Array.isArray(res.data) ? res.data : []; 
+        console.log('DEBUG: All reviews received (after array check):', allReviews);
 
-          setReviews(filteredReviews);
-          console.log('DEBUG: Reseñas cargadas (todas):', allReviews); 
-          console.log('DEBUG: Reseñas filtradas para este producto:', filteredReviews); 
-          setReviewsError('No se pudieron cargar las reseñas.');
-          console.error('Error fetching reviews:', err);
-          if (err.response) { 
-            console.error('Error response data:', err.response.data);
-            console.error('Error status:', err.response.status);
-          }
-        } finally {
-          setLoadingReviews(false);
-        }
-      }
+        
+        const filteredReviews = allReviews.filter(review => {
+          if (review.product && typeof review.product === 'object' && review.product._id) {
+            return review.product._id === currentProductId;
+          }
+          return review.product === currentProductId; 
+        });
+
+        setReviews(filteredReviews); 
+        console.log('DEBUG: Filtered reviews for this product:', filteredReviews); 
+
+      } catch (error) { 
+        setReviewsError('No se pudieron cargar las reseñas.'); 
+        console.error('Error fetching reviews:', error); 
+        if (error.response) { 
+          console.error('Error response data:', error.response.data);
+          console.error('Error status:', error.response.status);
+        }
+      } finally {
+        setLoadingReviews(false); 
+      }
+    };
+
     };
     fetchReviews();
   }, [currentProductId]); 
@@ -125,7 +133,7 @@ const GetOneProduct = () => {
           onReviewSubmitted={handleReviewSubmitted} 
         />
       </div>
-      <div className="reviews-list-container"> 
+      <div className="reviews-container"> 
         <h2>Reseñas de Clientes</h2> 
         {loadingReviews ? (
           <p>Cargando reseñas...</p>
