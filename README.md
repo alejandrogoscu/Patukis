@@ -19,6 +19,8 @@ Desarrollar un frontend **robusto** y **responsivo** con funcionalidades esencia
 
 ## 🚀 Características Implementadas
 
+![alt text](src/assets/funcionalidadesEntidades.png)
+
 ### 🧑‍💻 Autenticación de Usuarios
 
 - **Registro**  
